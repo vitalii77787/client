@@ -1,28 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { history } from './_helpers/history';
+import { FooterContainer } from './_components/Footer';
+import { store } from './_helpers/store';
+import { getAllCategories } from './_actions/categories.actions';
+import { CategoriesPage } from './_components/Category';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        const { dispatch } = this.props;
+    }
+
+    componentDidMount() {
+        store.dispatch(getAllCategories());
+    }
+
+    render() {
+        const { alert } = this.props;
+        return (
+            <div className="jumbotron">
+                <Router history={history}>
+                    <div className="container">
+                        <div className="col-sm-8 col-sm-offset-2">
+                            <div>
+                                <Route path="/categories/:categoryId?" component={CategoriesPage} />
+                                {/* <Route path="/product/:productId" component={ProductContainer} /> */}
+                            </div>
+                        </div>
+
+                        <FooterContainer />
+                    </div>
+                </Router>
+            </div>
+        );
+    }
 }
 
-export default App;
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
+
+const connectedApp = connect(mapStateToProps)(App);
+export { connectedApp as App }; 
