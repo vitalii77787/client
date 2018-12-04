@@ -6,6 +6,7 @@ import { FooterContainer } from './_components/Footer';
 import { store } from './_helpers/store';
 import { getAllCategories } from './_actions/categories.actions';
 import { CategoriesPage } from './_components/Category';
+import { RoutedProduct } from './_components/Product';
 
 
 class App extends React.Component {
@@ -27,7 +28,7 @@ class App extends React.Component {
                         <div className="col-sm-8 col-sm-offset-2">
                             <div>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
-                                {/* <Route path="/product/:productId" component={ProductContainer} /> */}
+                                 <Route path="/product/:productId" component={RoutedProduct} /> 
                             </div>
                         </div>
 

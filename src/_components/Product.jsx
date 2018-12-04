@@ -1,4 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { store } from '../_helpers/store';
+import {getProductById} from '../_actions/products.actions';
+
+class ProductPage extends React.Component {
+    render() {
+        const { product } = this.props;
+        return (
+            <div>{product.price}</div>
+        )
+    }
+}
+
+export const ProductContainer=connect(
+    (state) => {
+        return {
+            product: state.products.product
+        };
+    },
+    (dispatch) => { return {} }
+)(ProductPage);
+
+
 
 export class Product extends React.Component {
     componentDidMount() {
@@ -18,8 +42,9 @@ export class Product extends React.Component {
     render() {
         return (
             <div>
-                <RoutedCategoryListContainer />
+                <ProductContainer />
             </div>
         );
     }
 }
+export const RoutedProduct = withRouter(Product);

@@ -1,6 +1,7 @@
 import { productConstants } from '../_constants/products.constants';
 
 const defaultState = {
+    product:{},
     products: [],
     activeProductId: 0
   };
@@ -15,6 +16,9 @@ const defaultState = {
       }
       case productConstants.setActiveProduct: {
         return { ...state, activeProductId: action.payload };
+      }
+      case productConstants.getProductByIdLoaded: {
+        return { ...state, product: action.payload };
       }
       default:
         return state
