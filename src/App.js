@@ -25,12 +25,10 @@ class App extends React.Component {
             <div className="jumbotron">
                 <Router history={history}>
                     <div className="container">
-                        <div className="col-sm-8 col-sm-offset-2">
                             <div>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
                                  <Route path="/product/:productId" component={RoutedProduct} /> 
                             </div>
-                        </div>
 
                         <FooterContainer />
                     </div>
