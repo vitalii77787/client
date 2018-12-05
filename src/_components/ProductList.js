@@ -11,8 +11,6 @@ export const ProductList = ({ products }) => {
         </Link>
     )
 
-    debugger;
-
     return (
         <div style={{ padding: 0 }} className="product-wrapper">
             {productElements}

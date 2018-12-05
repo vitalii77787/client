@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../Style/ProductInfo/productinfo.css'
 
-class ProductPage extends React.Component {
+class ProductPage extends Component {
+
     render() {
-        const { product } = this.props; 
+        const { product } = this.props;
         return (
             <div className='card'>
                 <div className="row">
@@ -14,11 +15,13 @@ class ProductPage extends React.Component {
                                 <div> <a href="#"><img src="" /></a></div>
                             </div>
                             <div className="img-small-wrap">
-                            {
-                                product.photos.map(photo=> 
-                            <div className="item-gallery"> <img src={photo} /></div>
-                            )
-                            }
+                                {
+                                    product.photos.map(photo =>
+                                        <div key={photo} className="item-gallery">
+                                            <img src={photo} />
+                                        </div>
+                                    )
+                                }
                             </div>
                         </article>
                     </aside>
@@ -53,7 +56,7 @@ class ProductPage extends React.Component {
                                     <dl className="param param-inline">
                                         <dt>Quantity: </dt>
                                         <dd>
-                                            <select className="form-control form-control-sm" style={{width:'70px'}}>
+                                            <select className="form-control form-control-sm" style={{ width: '70px' }}>
                                                 <option> 1 </option>
                                                 <option> 2 </option>
                                                 <option> 3 </option>
@@ -93,8 +96,9 @@ class ProductPage extends React.Component {
 }
 
 export const ProductContainer = connect(
-    (state) => {
+    (state, ownProps) => {
         return {
+             ...ownProps,
             product: state.products.product
         };
     },
