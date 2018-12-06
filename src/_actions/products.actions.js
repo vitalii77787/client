@@ -5,7 +5,8 @@ export const productsActions = {
     getAllProducts,
     getProductsByCategory,
     setActiveProduct,
-    getProductById
+    getProductById,
+    setDefault
 }
 export const getProductById = (productId) => {
     return dispatch => {
@@ -60,8 +61,8 @@ export const getProductsByCategory = (categoryId) => {
             );
     }
 }
-function getProductByIdLoaded(product){
-    return{
+function getProductByIdLoaded(product) {
+    return {
         type: productConstants.getProductByIdLoaded,
         payload: product
     }
@@ -76,5 +77,11 @@ export const setActiveProduct = (id) => {
     return {
         type: productConstants.setActiveProduct,
         payload: id
+    } 
+};
+export const setDefault = () => {
+    return {
+        type: productConstants.SetDefault,
+        payload: 0
     }
 };

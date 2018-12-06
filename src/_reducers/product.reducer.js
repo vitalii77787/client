@@ -17,6 +17,9 @@ const defaultState = {
       case productConstants.setActiveProduct: {
         return { ...state, activeProductId: action.payload };
       }
+      case productConstants.setDefault:{
+        return { ...state, activeProductId: action.payload };
+      }
       case productConstants.getProductByIdLoaded: {
         return { ...state, product: action.payload };
       }

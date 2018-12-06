@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { setActiveProduct } from '../_actions/products.actions';
+import { setActiveProduct, setDefault } from '../_actions/products.actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import  logo from '../images/Hunting_Knife.png'
 
 class ProductView extends Component {
     render() {
@@ -8,15 +10,22 @@ class ProductView extends Component {
         console.log(this.props);
         const body = <section className="description">{product.text}</section>
         return (
-            <div className="product">
+            <div className="card" style={{width:'18rem'}} onClick={() => this.props.setActive(product.id)}>
+                <img class="card-img-top" src={logo} alt="Card image cap"></img>
                 {
                     this.props.activeProductId === product.id &&
                     <h1>Active</h1>
                 }
-                <h2 style={{ textAlign: 'center' }} onClick={() => this.props.setActive(product.id)}>
-                    {product.title}
-                </h2>
-                {body}
+                <div className='card-body'>
+                    <p className="card-text">
+                        <Link to={`/product/${product.id}`}>
+                            <h2 style={{ textAlign: 'center' }} >
+                                {product.title}
+                            </h2>
+                        </Link>
+                    </p>
+                    {body}
+                </div>
             </div>
         )
     }
@@ -33,6 +42,7 @@ export const ProductViewContainer = connect(
     (dispatch) => {
         return {
             setActive: (id) => dispatch(setActiveProduct(id))
+
         }
     }
 )(ProductView);

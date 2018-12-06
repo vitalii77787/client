@@ -6,6 +6,8 @@ class ProductPage extends Component {
 
     render() {
         const { product } = this.props;
+        if(product.photos)
+        {
         return (
             <div className='card'>
                 <div className="row">
@@ -93,6 +95,12 @@ class ProductPage extends Component {
             </div>
         )
     }
+    else{
+        return(
+            <span>Loading...</span>
+        )
+    }
+}
 }
 
 export const ProductContainer = connect(

@@ -5,4 +5,27 @@
     justify-content: space-around;
     align-content: space-between;
     width: 100%;
+    margin:10px;
+    padding: 10px;
 }
+
+.category-item{
+    padding: 5px 10px;
+    border-right: 2px;
+    margin:5px;
+}
+.active{
+    background-color: crimson;
+    color: whitesmoke;
+    border-radius: 10%;
+}
+
+.category-item:hover{
+    background-color: gold;
+    border-radius: 10%;
+}
+
+ a:link, a:visited, a:hover, a:active {
+    text-decoration:  none !important; 
+    color:black !important;
+  }

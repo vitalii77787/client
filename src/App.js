@@ -7,6 +7,7 @@ import { store } from './_helpers/store';
 import { getAllCategories } from './_actions/categories.actions';
 import { CategoriesPage } from './_components/Category';
 import { RoutedProduct } from './_components/Product';
+import { HeaderContainer } from './_components/Header';
 
 
 class App extends React.Component {
@@ -20,11 +21,11 @@ class App extends React.Component {
     }
 
     render() {
-        const { alert } = this.props;
         return (
             <div className="jumbotron">
                 <Router history={history}>
                     <div className="container">
+                    <HeaderContainer/>
                             <div>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
                                  <Route path="/product/:productId" component={RoutedProduct} /> 

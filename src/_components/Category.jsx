@@ -14,7 +14,7 @@ class CategoryList extends Component {
             {
                 categories.map(category =>
                 <div key={category.id}>
-                    <div className={activeCategoryId === category.id ? 'category active' : 'category'} >
+                    <div className={activeCategoryId === category.id ? 'category-item active' : 'category-item'} >
                         <h4 style={{ textAlign: 'center' }} >
                             <Link to={`/categories/${category.id}`}>{category.name}</Link>
                         </h4>
