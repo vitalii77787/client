@@ -13,8 +13,20 @@ class ProductPage extends Component {
                 <div className="row">
                     <aside className="col-sm-5 border-right">
                         <article className="gallery-wrap">
-                            <div className="img-big-wrap">
-                                <div> <a href="#"><img src="" /></a></div>
+                        <div className='row'>
+                        <div className="col-lg-2 order-lg-1 order-2">
+					<ul className="image_list">
+						<li ><img src={product.photos[0]} alt=""/></li>
+						<li ><img src={product.photos[0]} alt=""/></li>
+						<li ><img src={product.photos[0]} alt=""/></li>
+					</ul>
+				</div>
+				<div className="col-lg-5 order-lg-2 order-1">
+					<div className="image_selected"><img src={product.photos[0]} alt=""/></div>
+				</div>
+                </div>
+                            {/* <div className="img-big-wrap">
+                                <div> <img src={product.photos[0]} /></div>
                             </div>
                             <div className="img-small-wrap">
                                 {
@@ -24,7 +36,7 @@ class ProductPage extends Component {
                                         </div>
                                     )
                                 }
-                            </div>
+                            </div> */}
                         </article>
                     </aside>
                     <aside className="col-sm-7">
@@ -52,41 +64,6 @@ class ProductPage extends Component {
                                 <dt>Delivery</dt>
                                 <dd>Russia, USA, and Europe</dd>
                             </dl>
-                            <hr />
-                            <div className="row">
-                                <div className="col-sm-5">
-                                    <dl className="param param-inline">
-                                        <dt>Quantity: </dt>
-                                        <dd>
-                                            <select className="form-control form-control-sm" style={{ width: '70px' }}>
-                                                <option> 1 </option>
-                                                <option> 2 </option>
-                                                <option> 3 </option>
-                                            </select>
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div className="col-sm-7">
-                                    <dl className="param param-inline">
-                                        <dt>Size: </dt>
-                                        <dd>
-                                            <label className="form-check form-check-inline">
-                                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                                <span className="form-check-label">SM</span>
-                                            </label>
-                                            <label className="form-check form-check-inline">
-                                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                                <span className="form-check-label">MD</span>
-                                            </label>
-                                            <label className="form-check form-check-inline">
-                                                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                                <span className="form-check-label">XXL</span>
-                                            </label>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <hr />
                             <a href="#" className="btn btn-lg btn-primary text-uppercase"> Buy now </a>
                             <a href="#" className="btn btn-lg btn-outline-primary text-uppercase"> <i className="fas fa-shopping-cart"></i> Add to cart </a>
                         </article>
