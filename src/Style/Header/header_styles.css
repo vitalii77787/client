@@ -298,10 +298,6 @@ section
 	line-height: 56px;
 	margin-right: 40px;
 }
-.top_bar_contact_item:not(:first-child)
-{
-	margin-right: 0px;
-}
 .top_bar_contact_item a
 {
 	font-size: 16px;
@@ -318,10 +314,7 @@ section
 {
 	color: #8a8a8a;
 }
-.top_bar_contact_item:last-child
-{
-	margin-right: 0px;
-}
+
 .top_bar_icon
 {
 	display: inline-block;
@@ -1644,7 +1637,7 @@ select option
 {
 	position: relative;
 	left: -10px;
-	width: calc(100% + 20px);
+	width: 100%;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;

@@ -3,7 +3,8 @@ import { productConstants } from '../_constants/products.constants';
 const defaultState = {
     product:{},
     products: [],
-    activeProductId: 0
+    activeProductId: 0,
+    productActiveImage:0
   };
 
   export function products(state = defaultState, action) {
@@ -23,6 +24,12 @@ const defaultState = {
       case productConstants.getProductByIdLoaded: {
         return { ...state, product: action.payload };
       }
+      case productConstants.setActiveImage: {
+        return { ...state, productActiveImage: action.payload };
+      };
+      case productConstants.setDefaultImage: {
+        return { ...state, productActiveImage: action.payload };
+      };
       default:
         return state
     }

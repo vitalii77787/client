@@ -5,7 +5,7 @@ import '../Style/ProductInfo/products.css'
 
 export const ProductList = ({ products }) => {
     const productElements = products.map(product =>
-        <div key={product.id} className="product-item">
+        <div key={product.id} className='product-item'>
             <ProductViewContainer product={product} />
         </div>
     )

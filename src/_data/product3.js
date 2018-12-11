@@ -1,6 +1,6 @@
 export const product3 =
 {
-    "id": "56c782f18990ecf954f6e0274",
+    "id": "56c782f18990ecf954f6e0174",
     "title": "Green house",
     "description": "Very green house with modern design",
     "price": "42,13",

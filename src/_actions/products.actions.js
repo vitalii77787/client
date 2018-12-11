@@ -53,12 +53,19 @@ export const getProductsByCategory = (categoryId) => {
                 (response) => {
                     const data = response.data;
                     dispatch(getProductsByCategoryLoaded(data));
+                    dispatch(setDefaultProductImage());
                 },
                 error => {
                     console.log(error);
                     // dispatch(failure(id, error));
                 }
             );
+    }
+}
+function setDefaultProductImage(){
+    return{
+        type:productConstants.setDefaultImage,
+        payload:0
     }
 }
 function getProductByIdLoaded(product) {
@@ -79,6 +86,13 @@ export const setActiveProduct = (id) => {
         payload: id
     } 
 };
+export const setActiveImage=(src)=>{
+    return{
+        type: productConstants.setActiveImage,
+        payload: src
+    }
+};
+
 export const setDefault = () => {
     return {
         type: productConstants.SetDefault,

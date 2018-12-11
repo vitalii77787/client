@@ -3,30 +3,49 @@ import { setActiveProduct, setDefault } from '../_actions/products.actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  logo from '../images/Hunting_Knife.png'
+import '../Style/ProductInfo/shop_styles.css'
+import { product } from '../_data/product';
 
 class ProductView extends Component {
     render() {
         const { product } = this.props;
-        console.log(this.props);
-        const body = <section className="description">{product.text}</section>
+        // const body = <section className="description">{product.text}</section>
         return (
-            <div className="card" style={{width:'18rem'}} onClick={() => this.props.setActive(product.id)}>
-                <img class="card-img-top" src={logo} alt="Card image cap"></img>
+            <div className={product.discount?"product_item discount":"product_item"}>
+            <div className="product_image d-flex flex-column align-items-center justify-content-center"><img src={logo}  alt=""/></div>
+            <Link to={`/product/${product.id}`}>
+            <div className="product_content">
+                <div className="product_price">
                 {
-                    this.props.activeProductId === product.id &&
-                    <h1>Active</h1>
+                    product.discount?<div className="discounted_price">${product.price-(product.price*product.discount)/100}<span>${product.price}</span></div>:<div>${product.price}</div>
                 }
-                <div className='card-body'>
-                    <p className="card-text">
-                        <Link to={`/product/${product.id}`}>
-                            <h2 style={{ textAlign: 'center' }} >
-                                {product.title}
-                            </h2>
-                        </Link>
-                    </p>
-                    {body}
                 </div>
+                <div className="product_name"> {product.title}</div>
             </div>
+            </Link>
+            <div className="product_fav"><i className="fas fa-heart"></i></div>
+            <ul className="product_marks">
+                <li className="product_mark product_discount">-{product.discount}%</li>
+                <li className="product_mark product_new">new</li>
+            </ul>
+            </div>
+            // <div classNameName="card" style={{width:'18rem'}} onClick={() => this.props.setActive(product.id)}>
+            //     <img className="card-img-top" src={logo} alt="Card image cap"></img>
+            //     {
+            //         this.props.activeProductId === product.id &&
+            //         <h1>Active</h1>
+            //     }
+            //     <div classNameName='card-body'>
+            //         <p classNameName="card-text">
+            //             <Link to={`/product/${product.id}`}>
+            //                 <h2 style={{ textAlign: 'center' }} >
+            //                     {product.title}
+            //                 </h2>
+            //             </Link>
+            //         </p>
+            //         {body}
+            //     </div>
+            // </div>
         )
     }
 }
