@@ -10,6 +10,7 @@ class ProductPage extends Component {
         if (product.photos) {
             let activeImage=(this.props.activeImage===0)?product.photos[0]:this.props.activeImage;
             return (
+                <div className="container">
                 <div className='card'>
                     <div className="row">
                         <aside className="col-sm-5 border-right">
@@ -71,6 +72,7 @@ class ProductPage extends Component {
                             </article>
                         </aside>
                     </div>
+                </div>
                 </div>
             )
         }

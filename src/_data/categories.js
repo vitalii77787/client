@@ -1,26 +1,26 @@
 export const categories = [
     {
         "id": "1qwerty",
-        "name": "First",
+        "name": "Computers & Laptops",
     },
     {
         "id": "2qwerty",
-        "name": "Second",
+        "name": "Camera & Photos",
     },
     {
         "id": "3qwerty",
-        "name": "Third",
+        "name": "Hardware",
     },
     {
         "id": "4qwerty",
-        "name": "Fourth",
+        "name": "Smartphones & Tablets",
     },
     {
         "id": "5qwerty",
-        "name": "Fifth",
+        "name": "Gadgets",
     },
     {
         "id": "6qwerty",
-        "name": "Sixth",
+        "name": "Tv & Audio",
     }
 ]

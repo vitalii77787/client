@@ -29,9 +29,22 @@ function getAllCategoriesLoaded(categories) {
         payload: categories
     }
 }
-export const setActiveCategory = (id) => {
+export const setActiveCategory = (id,name) => {
+    return dispatch=>{
+        dispatch(setActiveCategoryId(id));
+        dispatch(setActiveCategoryName(name));
+    }
+}
+
+function setActiveCategoryId(id){
     return {
-        type: categoryConstants.setActiveCategory,
+        type: categoryConstants.setActiveCategoryId,
         payload: id
+    }
+}
+function setActiveCategoryName(name){
+    return {
+        type: categoryConstants.setActiveCategoryName,
+        payload: name
     }
 }

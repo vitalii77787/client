@@ -22,9 +22,8 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="jumbotron">
                 <Router history={history}>
-                    <div className="container">
+                <div>
                     <HeaderContainer/>
                             <div>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
@@ -32,9 +31,8 @@ class App extends React.Component {
                             </div>
 
                         <FooterContainer />
-                    </div>
+                        </div>
                 </Router>
-            </div>
         );
     }
 }
