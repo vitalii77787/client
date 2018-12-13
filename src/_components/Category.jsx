@@ -3,6 +3,7 @@ import { RoutedCategoryProducts } from './Products';
 import { RoutedCategoryListContainer } from './CategoryList';
 import '../Style/ProductInfo/shop_styles.css';
 import { ConnectedCategoryHeader } from './CategoryHeader';
+import { ConnectedProductsFilter } from './ProductsFilter';
 
 
 export class CategoriesPage extends React.Component {
@@ -52,12 +53,7 @@ export class CategoriesPage extends React.Component {
                                             <span>Sort by:</span>
                                             <ul>
                                                 <li>
-                                                    <span className="sorting_text">highest rated<i clasName="fas fa-chevron-down"></i></span>
-                                                    <ul>
-                                                        <li className="shop_sorting_button" data-isotope-option='{ "sortBy": "original-order" }'>highest rated</li>
-                                                        <li className="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>name</li>
-                                                        <li className="shop_sorting_button" data-isotope-option='{ "sortBy": "price" }'>price</li>
-                                                    </ul>
+                                                   <ConnectedProductsFilter/>
                                                 </li>
                                             </ul>
                                         </div>

@@ -4,7 +4,8 @@ const defaultState = {
     product:{},
     products: [],
     activeProductId: 0,
-    productActiveImage:0
+    productActiveImage:0,
+    activeSortLabel:''
   };
 
   export function products(state = defaultState, action) {
@@ -30,7 +31,19 @@ const defaultState = {
       case productConstants.setDefaultImage: {
         return { ...state, productActiveImage: action.payload };
       };
+      case productConstants.sortProducts:{
+        return {
+          ...state, products: state.products.slice().sort(sortByKey(action.payload))
+        }
+      }
+      case productConstants.setSortLabel:{
+        return{
+          ...state, activeSortLabel:action.payload
+        }
+      }
       default:
         return state
     }
   }
+
+  const sortByKey = key => (a, b) => a[key] > b[key]

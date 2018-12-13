@@ -1,4 +1,6 @@
 export const productConstants ={
+    setSortLabel: "SET_SORT_LABEL",
+    sortProducts: "SORT_PRODUCTS",
     getAllProducts: "GET_ALL_PRODUCTS",
     getAllProductsLoaded: "GET_ALL_PRODUCTS_LOADED",
     setActiveProduct: "SET_ACTIVE_PRODUCT",

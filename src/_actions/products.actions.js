@@ -54,6 +54,7 @@ export const getProductsByCategory = (categoryId) => {
                     const data = response.data;
                     dispatch(getProductsByCategoryLoaded(data));
                     dispatch(setDefaultProductImage());
+                    dispatch(setActiveSortLabel("not selected"));
                 },
                 error => {
                     console.log(error);
@@ -62,6 +63,26 @@ export const getProductsByCategory = (categoryId) => {
             );
     }
 }
+export const sortProducts=(key)=>{
+    return dispatch=>{
+       dispatch(setActiveSortLabel(key));
+        dispatch(sortProductsAction(key));
+    }
+}
+function setActiveSortLabel(key)
+{
+    return{
+        type:productConstants.setSortLabel,
+        payload:key
+    }
+}
+function sortProductsAction(key){
+    return{
+        type:productConstants.sortProducts,
+        payload:key
+    }
+}
+
 function setDefaultProductImage(){
     return{
         type:productConstants.setDefaultImage,
