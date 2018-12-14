@@ -8,6 +8,8 @@ import { getAllCategories } from './_actions/categories.actions';
 import { CategoriesPage } from './_components/Category';
 import { RoutedProduct } from './_components/Product';
 import { HeaderContainer } from './_components/Header';
+import { RegisterForm } from './_components/Forms/Register/Register';
+import { LoginForm } from './_components/Forms/Login/Login';
 
 
 class App extends React.Component {
@@ -26,8 +28,10 @@ class App extends React.Component {
                 <div>
                     <HeaderContainer/>
                             <div>
+                                <Route path="/login" component={LoginForm}/>
+                                <Route path="/register" component={RegisterForm}/>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
-                                 <Route path="/product/:productId" component={RoutedProduct} /> 
+                                <Route path="/product/:productId" component={RoutedProduct} /> 
                             </div>
 
                         <FooterContainer />

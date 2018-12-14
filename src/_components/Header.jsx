@@ -16,8 +16,8 @@ export class Header extends React.Component {
                             <div className="top_bar_content ml-auto">
                                 <div className="top_bar_user">
                                     <div className="user_icon"><img src="" alt="" /></div>
-                                    <div><a href="#">Register</a></div>
-                                    <div><a href="#">Sign in</a></div>
+                                    <div><Link to="/register">Register</Link></div>
+                                    <div><Link to="/login">Sign in</Link></div>
                                 </div>
                             </div>
                         </div>
