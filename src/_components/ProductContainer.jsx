@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../Style/ProductInfo/productinfo.css'
 import { setActiveImage } from '../_actions/products.actions';
+import { addToCart } from '../_actions/productCart.actions';
+
 
 class ProductPage extends Component {
 
@@ -28,19 +30,6 @@ class ProductPage extends Component {
                                     <div className="image_selected"><img src={activeImage} alt="" /></div>
                                 </div>
                             </div>
-                            {/* <div className="img-big-wrap">
-                                <div> <img src={product.photos[0]} /></div>
-                            </div>
-                            <div className="img-small-wrap">
-                                {
-                                    product.photos.map(photo =>
-                                        <div key={photo} className="item-gallery">
-                                            <img src={photo} />
-                                        </div>
-                                    )
-                                }
-                            </div> */}
-                            {/* </article> */}
                         </aside>
                         <aside className="col-sm-7">
                             <article className="card-body p-5">
@@ -67,8 +56,8 @@ class ProductPage extends Component {
                                     <dt>Delivery</dt>
                                     <dd>Russia, USA, and Europe</dd>
                                 </dl>
-                                <a href="#" className="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-                                <a href="#" className="btn btn-lg btn-outline-primary text-uppercase"> <i className="fas fa-shopping-cart"></i> Add to cart </a>
+                                <div className="btn btn-lg btn-primary text-uppercase"> Buy now </div>
+                                <div className="btn btn-lg btn-outline-primary text-uppercase" onClick={()=>this.props.addToCart(product.id)}> <i className="fas fa-shopping-cart"></i> Add to cart </div>
                             </article>
                         </aside>
                     </div>
@@ -93,7 +82,7 @@ export const ProductContainer = connect(
         };
     },
     (dispatch) => {   return {
-        setActiveImg: (src) => dispatch(setActiveImage(src))
-
+        setActiveImg: (src) => dispatch(setActiveImage(src)),
+        addToCart:(id)=>dispatch(addToCart(id))
     } }
 )(ProductPage);

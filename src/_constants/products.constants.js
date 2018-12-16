@@ -1,4 +1,6 @@
 export const productConstants ={
+    toggleWishList: "TOGGLE_WISH_LIST",
+    setToggle: "SET_TOGGLE",
     setSortLabel: "SET_SORT_LABEL",
     sortProducts: "SORT_PRODUCTS",
     getAllProducts: "GET_ALL_PRODUCTS",

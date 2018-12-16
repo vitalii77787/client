@@ -3,9 +3,10 @@ import { productConstants } from '../_constants/products.constants';
 const defaultState = {
     product:{},
     products: [],
+    wishList: [],
     activeProductId: 0,
     productActiveImage:0,
-    activeSortLabel:''
+    activeSortLabel:'default'
   };
 
   export function products(state = defaultState, action) {
@@ -39,6 +40,32 @@ const defaultState = {
       case productConstants.setSortLabel:{
         return{
           ...state, activeSortLabel:action.payload
+        }
+      }
+      case productConstants.setToggle:{
+        return{
+          ...state,
+          products: state.products.map(product=>product.id===action.payload?
+            {
+              ...product, isWish:!product.isWish
+            }:
+            product)
+        }
+      }
+      case productConstants.toggleWishList:{
+        let result=state.wishList.filter(ownid=>ownid==action.payload);
+        if (result.length>0)
+        {
+          return{
+            ...state,
+            wishList: state.wishList.filter(item => item !== action.payload)
+          }
+                 }
+        else{
+            return{
+              ...state,
+             wishList:[...state.wishList, action.payload]
+           }
         }
       }
       default:

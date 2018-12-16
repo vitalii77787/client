@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { setActiveProduct, setDefault } from '../_actions/products.actions';
+import {
+    setActiveProduct,
+    setDefault,
+    ToggleProduct,
+    ToggleWish
+} from '../_actions/products.actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  logo from '../images/Hunting_Knife.png'
@@ -14,7 +19,7 @@ class ProductView extends Component {
             <div className={product.discount?"product_item discount":"product_item"}>
             <div className="product_border"></div>
             <div className="product_image d-flex flex-column align-items-center justify-content-center"><img src={logo}  alt=""/></div>
-            <div className="product_content" onClick={() => this.props.setActive(product.id)}>
+            <div className="product_content">
                 <div className="product_price">
                 {
                     product.discount?<div className="discounted_price">${product.price-(product.price*product.discount)/100}<span>${product.price}</span></div>:<div>${product.price}</div>
@@ -25,7 +30,9 @@ class ProductView extends Component {
                 </Link>
                 </div>
             </div>
-                    <div className="product_fav"><i className="fa fa-heart"></i></div>
+                    <div className={product.isWish==true?"product_fav active":"product_fav"}  onClick={() => this.props.Toggle(product.id)}>
+                    <i className="fa fa-heart"></i>
+                    </div>
             <ul className="product_marks">
                 <li className="product_mark product_discount">-{product.discount}%</li>
                 <li className="product_mark product_new">new</li>
@@ -62,7 +69,7 @@ export const ProductViewContainer = connect(
     },
     (dispatch) => {
         return {
-            setActive: (id) => dispatch(setActiveProduct(id))
+            Toggle: (id) => dispatch(ToggleWish(id))
 
         }
     }

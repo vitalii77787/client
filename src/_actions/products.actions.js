@@ -107,6 +107,26 @@ export const setActiveProduct = (id) => {
         payload: id
     } 
 };
+
+export const ToggleWish=(id)=>{
+    return dispatch=>{
+        dispatch(ToggleProduct(id));
+        dispatch( ToggleWishList(id));
+    }
+}
+
+export const ToggleWishList=(id)=>{
+    return{
+        type:productConstants.toggleWishList,
+        payload: id
+    }
+}
+export const ToggleProduct=(id)=>{
+    return{
+        type:productConstants.setToggle,
+        payload: id
+    }
+}
 export const setActiveImage=(src)=>{
     return{
         type: productConstants.setActiveImage,
