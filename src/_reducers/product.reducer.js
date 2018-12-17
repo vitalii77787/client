@@ -6,11 +6,15 @@ const defaultState = {
     wishList: [],
     activeProductId: 0,
     productActiveImage:0,
-    activeSortLabel:'default'
+    activeSortLabel:'default',
+    priceValue:{min:0, max:1000}
   };
 
   export function products(state = defaultState, action) {
     switch (action.type) {
+      case productConstants.setPrice:{
+        return{ ...state, priceValue:action.payload};
+      }
       case productConstants.getAllProductsLoaded: {
         return { ...state, products: action.payload };
       }

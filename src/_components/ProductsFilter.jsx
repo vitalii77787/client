@@ -7,7 +7,7 @@ class ProductsFilter extends Component {
         const { activeSortLabel } = this.props;
         return (
             <div>
-                <span className="sorting_text">{activeSortLabel}<i clasName="fas fa-chevron-down"></i></span>
+                <span className="sorting_text">{activeSortLabel}<i clasName="fa fa-chevron-down"></i></span>
                 <ul>
                     <li className="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }' onClick={() => this.props.Filter('title')}>name</li>
                     <li className="shop_sorting_button" data-isotope-option='{ "sortBy": "price" }' onClick={() => this.props.Filter('price')}>price</li>

@@ -57,7 +57,7 @@ export class LoginForm extends Component {
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
-                            <button type="submit" className="btn btn-success"><i className="fa fa-user-plus"></i>Login</button>
+                            <button type="submit" className="btn btn-success"><i className="fa fa-user"></i>  Login</button>
                         </div>
                     </div>
                 </form>

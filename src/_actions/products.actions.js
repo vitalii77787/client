@@ -140,3 +140,10 @@ export const setDefault = () => {
         payload: 0
     }
 };
+
+export const setPrice=(value)=>{
+    return{
+        type:productConstants.setPrice,
+        payload:value
+    }
+}

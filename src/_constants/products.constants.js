@@ -10,5 +10,6 @@ export const productConstants ={
     getProductByIdLoaded: "GET_PRODUCT_BY_ID_LOADED",
     setDefault: "SET_DEFAULT",
     setActiveImage: "SET_ACTIVE_IMAGE",
-    setDefaultImage: "SET_DEFAULT_IMAGE"
+    setDefaultImage: "SET_DEFAULT_IMAGE",
+    setPrice: "SET_PRICE"
 }

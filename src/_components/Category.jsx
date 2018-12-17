@@ -4,13 +4,15 @@ import { RoutedCategoryListContainer } from './CategoryList';
 import '../Style/ProductInfo/shop_styles.css';
 import { ConnectedCategoryHeader } from './CategoryHeader';
 import { ConnectedProductsFilter } from './ProductsFilter';
-
+import InputRange from 'react-input-range';
+import '../Style/Slyder/slider-styles.css';
+import { ConnectedFilterPrice } from './FilterComponents/priceComponent';
 
 export class CategoriesPage extends React.Component {
     render() {
         return (
             <div>
-                <ConnectedCategoryHeader/>
+                <ConnectedCategoryHeader />
                 <div className="shop">
                     <div className="container">
                         <div className="row">
@@ -23,11 +25,7 @@ export class CategoriesPage extends React.Component {
                                     <div className="sidebar_section filter_by_section">
                                         <div className="sidebar_title">Filter By</div>
                                         <div className="sidebar_subtitle">Price</div>
-                                        <div className="filter_price">
-                                            <div id="slider-range" className="slider_range"></div>
-                                            <p>Range: </p>
-                                            <p><input type="text" id="amount" className="amount" style={{ border: '0', fontWeight: 'bold' }} readOnly value='$1-$1000' /></p>
-                                        </div>
+                                   <ConnectedFilterPrice/>
                                     </div>
                                     <div className="sidebar_section">
                                         <div className="sidebar_subtitle brands_subtitle">Brands</div>
@@ -53,7 +51,7 @@ export class CategoriesPage extends React.Component {
                                             <span>Sort by:</span>
                                             <ul>
                                                 <li>
-                                                   <ConnectedProductsFilter/>
+                                                    <ConnectedProductsFilter />
                                                 </li>
                                             </ul>
                                         </div>
@@ -62,7 +60,7 @@ export class CategoriesPage extends React.Component {
                                     <div className="shop_page_nav d-flex flex-row">
                                         <div className="page_prev d-flex flex-column align-items-center justify-content-center"><i className="fa fa-chevron-left"></i></div>
                                         <ul className="page_nav d-flex flex-row">
-                                            <li><a href="#">1</a></li>
+                                            <li className="active"><a href="#">1</a></li>
                                             <li><a href="#">2</a></li>
                                             <li><a href="#">3</a></li>
                                             <li><a href="#">...</a></li>
