@@ -7,6 +7,7 @@ import { ConnectedProductsFilter } from './ProductsFilter';
 import InputRange from 'react-input-range';
 import '../Style/Slyder/slider-styles.css';
 import { ConnectedFilterPrice } from './FilterComponents/priceComponent';
+import { ConnectedFiltersCategoryComponent } from './FilterComponents/filterCategoryComponent';
 
 export class CategoriesPage extends React.Component {
     render() {
@@ -29,16 +30,15 @@ export class CategoriesPage extends React.Component {
                                     </div>
                                     <div className="sidebar_section">
                                         <div className="sidebar_subtitle brands_subtitle">Brands</div>
-                                        <ul className="brands_list">
-                                            <li className="brand"><a href="#">Apple</a></li>
+                                        <ConnectedFiltersCategoryComponent/>
+                                            {/* <li className="brand"><a href="#">Apple</a></li>
                                             <li className="brand"><a href="#">Beoplay</a></li>
                                             <li className="brand"><a href="#">Google</a></li>
                                             <li className="brand"><a href="#">Meizu</a></li>
                                             <li className="brand"><a href="#">OnePlus</a></li>
                                             <li className="brand"><a href="#">Samsung</a></li>
                                             <li className="brand"><a href="#">Sony</a></li>
-                                            <li className="brand"><a href="#">Xiaomi</a></li>
-                                        </ul>
+                                            <li className="brand"><a href="#">Xiaomi</a></li> */}
                                     </div>
 
                                 </div>

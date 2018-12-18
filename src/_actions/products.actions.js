@@ -54,7 +54,7 @@ export const getProductsByCategory = (categoryId) => {
                     const data = response.data;
                     dispatch(getProductsByCategoryLoaded(data));
                     dispatch(setDefaultProductImage());
-                    dispatch(setActiveSortLabel("not selected"));
+                    dispatch(setActiveSortLabel("default"));
                 },
                 error => {
                     console.log(error);

@@ -1,0 +1,37 @@
+.icon-credit_market, .icon-epayment, 
+.icon-epayment-belcard, .icon-epayment-credit_market, 
+.icon-epayment-guaranteed_purchase, .icon-epayment-guaranteed_purchase_ua, 
+.icon-epayment-immediate-installment, .icon-epayment-liqpay, .icon-epayment-maestro, 
+.icon-epayment-mir, .icon-epayment-moneymailru, .icon-epayment-pay-parts, .icon-epayment-privat24, 
+.icon-epayment-qiwi, .icon-epayment-visa, .icon-epayment-wayforpay, .icon-epayment-webmoney, .icon-epayment-webpay, 
+.icon-epayment-wooppay, .icon-grad_bags, .icon-grad_label_star, .icon-grad_medal, .icon-grad_protection, .icon-grad_store, .icon-green-lock, 
+.icon-neverused, .icon-payLater, .icon-pbr_main {
+    display: inline-block;
+    background-image: url(../../images/promualabel.png);
+}
+
+.icon-pbr_main {
+    background-position: -215px 0;
+    width: 43px;
+    height: 70px;
+}
+.icon-grad_medal {
+    background-position: -165px 0;
+    width: 50px;
+    height: 70px;
+}
+.icon-grad_protection {
+    background-position: 0 -68px;
+    width: 60px;
+    height: 70px;
+}
+.icon-grad_label_star {
+    background-position: 0 0;
+    width: 84px;
+    height: 68px;
+}
+.icon-grad_bags {
+    background-position: -84px 0;
+    width: 81px;
+    height: 67px;
+}

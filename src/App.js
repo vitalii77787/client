@@ -11,6 +11,8 @@ import { HeaderContainer } from './_components/Header';
 import { ConnectedRegisterForm } from './_components/Forms/Register/Register';
 import { LoginForm } from './_components/Forms/Login/Login';
 import { WishListCart } from './_components/Header/WishListCart';
+import { Characteristics } from './_components/Header/Characteristics';
+
 
 
 class App extends React.Component {
@@ -29,6 +31,7 @@ class App extends React.Component {
                 <div>
                     <HeaderContainer/>
                     <WishListCart/>
+                    < Characteristics/>
                             <div>
                                 <Route path="/login" component={LoginForm}/>
                                 <Route path="/register" component={ConnectedRegisterForm}/>
