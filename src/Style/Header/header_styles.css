@@ -799,7 +799,7 @@ select option
 }
 .cart_content
 {
-	margin-left: 28px;
+	margin-left: 0px;
 }
 .cart_text a
 {
@@ -1283,7 +1283,7 @@ select option
 }
 .char_icon
 {
-	margin-right: 24px;
+	margin-bottom: 20px;
 }
 .char_content
 {
@@ -1291,7 +1291,7 @@ select option
 }
 .char_title
 {
-	font-size: 14px;
+	font-size: 700;
 	font-weight: 500;
 	color: #000000;
 }

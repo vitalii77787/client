@@ -2,7 +2,7 @@ import { cartConstants } from '../_constants/cart.constants';
 
 
 const defaultState = {
-    products: [],
+    productsId: [],
   };
 
   export function cart(state = defaultState, action) {
@@ -10,13 +10,13 @@ const defaultState = {
       case cartConstants.addToCart:{
           return{
               ...state,
-            products: [...state.products, action.payload]
+            products: [...state.productsId, action.payload]
           }
       }
       case cartConstants.removeFromCart:{
           return{
             ...state,
-           products: state.products.filter(item => item !== action.payload)
+           products: state.productsId.filter(item => item !== action.payload)
           }
       }
       default:

@@ -7,7 +7,7 @@ export class Footer extends React.Component {
     render() {
         return (
             <div>
-               	<footer className="footer">
+               	<footer className="footer" style={{backgroundColor:"#fafafa"}}>
 		<div className="container">
 			<div className="row">
 

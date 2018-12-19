@@ -6,10 +6,10 @@ import React from 'react';
         const { count } = this.props;
         return (
             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                <div class="wishlist_icon"><img src="images/heart.png" alt="" /></div>
+                <div class="wishlist_icon"><i className="fa fa-heart  fa-2x"></i>
+                <div class="cart_count"><span>{count}</span></div></div>
                 <div class="wishlist_content">
                     <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                    <div class="wishlist_count">{count}</div>
                 </div>
             </div>
         )

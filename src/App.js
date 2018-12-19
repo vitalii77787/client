@@ -11,7 +11,7 @@ import { HeaderContainer } from './_components/Header';
 import { ConnectedRegisterForm } from './_components/Forms/Register/Register';
 import { LoginForm } from './_components/Forms/Login/Login';
 import { WishListCart } from './_components/Header/WishListCart';
-import { Characteristics } from './_components/Header/Characteristics';
+import { Index } from './_components/IndexPage/Index';
 
 
 
@@ -31,8 +31,8 @@ class App extends React.Component {
                 <div>
                     <HeaderContainer/>
                     <WishListCart/>
-                    < Characteristics/>
                             <div>
+                                <Route exact path="/" component={Index}/>
                                 <Route path="/login" component={LoginForm}/>
                                 <Route path="/register" component={ConnectedRegisterForm}/>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
