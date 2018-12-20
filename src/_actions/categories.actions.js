@@ -35,7 +35,15 @@ export const setActiveCategory = (id,name) => {
         dispatch(setActiveCategoryName(name));
     }
 }
-
+export function setDefaultCategory(){
+    return{
+        type:categoryConstants.setDefaultCategory,
+        payload:{
+            categoryId:0,
+            categoryName:""
+        }
+    }
+}
 function setActiveCategoryId(id){
     return {
         type: categoryConstants.setActiveCategoryId,

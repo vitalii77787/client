@@ -4,6 +4,7 @@ import { getAllProducts, getProductsByCategory } from '../_actions/products.acti
 import { withRouter } from 'react-router';
 import { store } from '../_helpers/store';
 import { ProductList } from './ProductList';
+import { setDefaultCategory } from '../_actions/categories.actions';
 
 class ProductsPage extends React.Component {
     render() {
@@ -42,6 +43,9 @@ export class CategoryProducts extends React.Component {
             }
         }
     }
+    componentWillUnmount() {
+        store.dispatch(setDefaultCategory());
+      }
 
     render() {
         return (

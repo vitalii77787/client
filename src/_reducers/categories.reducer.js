@@ -17,6 +17,13 @@ const defaultStatecategories = {
       case categoryConstants.setActiveCategoryName: {
         return { ...state, activeCategoryName: action.payload };
       }
+      case categoryConstants.setDefaultCategory:{
+        return{
+          ...state,
+          activeCategoryId:action.payload.categoryId,
+          activeCategoryName: action.payload.categoryName
+        };
+      }
       default:
         return state
     }

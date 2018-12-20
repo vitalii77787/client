@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class Cart extends React.Component {
     render() {
@@ -12,7 +13,9 @@ export class Cart extends React.Component {
                             <div class="cart_count"><span>{count}</span></div>
                         </div>
                         <div class="cart_content">
-                            <div class="cart_text"><a href="#">Cart</a></div>
+                            <div class="cart_text">
+                            <Link to="/cart">Cart</Link>
+                            </div>
                            
                         </div>
                     </div>
