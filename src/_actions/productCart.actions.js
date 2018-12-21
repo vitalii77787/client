@@ -44,3 +44,9 @@ export function decrementCartProduct(id){
         payload: id
     }
 }
+export function deleteCartItem(id){
+    return{
+        type: cartConstants.deleteCartItem,
+        payload: id
+    }
+}

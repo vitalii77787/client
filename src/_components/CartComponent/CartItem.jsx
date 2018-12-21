@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Hunting_Knife from '../../images/Hunting_Knife.png';
-import { incrementCartProduct, decrementCartProduct } from '../../_actions/productCart.actions';
+import { incrementCartProduct, decrementCartProduct, deleteCartItem } from '../../_actions/productCart.actions';
 
 export class CartItem extends Component {
 
@@ -35,6 +35,9 @@ export class CartItem extends Component {
                         <div class="cart_item_title">Total</div>
                         <div class="cart_item_text">${product.price*product.count}</div>
                     </div>
+                    <div class="cart_item_total cart_info_col">
+                        <button className="btn btn-primary"  style={{marginTop:"50%"}} onClick={()=>this.props.Delete(product.id)}>Delete</button>
+                    </div>
                 </div>
             </div>
         )
@@ -45,7 +48,8 @@ export const ConnectedCartItem = connect(
     (dispatch) => {
         return {
             Increment:(id)=>dispatch(incrementCartProduct(id)),
-            Decrement:(id)=>dispatch(decrementCartProduct(id))
+            Decrement:(id)=>dispatch(decrementCartProduct(id)),
+            Delete:(id)=>dispatch(deleteCartItem(id)),
         }
     }
 )(CartItem);

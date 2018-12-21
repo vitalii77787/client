@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {
+    changeMailAction,
+    changePasswordAction
+} from '../../../_actions/loginModel.actions';
+
 
 export class LoginForm extends Component {
+
+    changeMail = (event) => {
+        const newMail = event.target.value
+        this.props.changeMail(newMail);
+    };
+    changePassword = (event) => {
+        const newPassword = event.target.value
+        
+        this.props.changePassword(newPassword);
+    };
+
     render() {
         return (
             <div className="container" >
@@ -21,7 +38,7 @@ export class LoginForm extends Component {
                                 <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div className="input-group-addon" style={{width: '2.6rem'}}><i className="fa fa-at"></i></div>
                                     <input type="text" name="email" className="form-control" id="email"
-                                        placeholder="you@example.com" required autofocus />
+                                        placeholder="you@example.com" required autofocus  value={this.props.mail} onChange={this.changeMail}/>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +58,7 @@ export class LoginForm extends Component {
                             <div className="form-group has-danger">
                                 <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div className="input-group-addon" style={{width: '2.6rem'}}><i className="fa fa-key"></i></div>
-                                    <input type="password" name="password" className="form-control" id="password"
+                                    <input type="password" name="password" className="form-control" id="password"  value={this.props.password} onChange={this.changePassword}
                                         placeholder="Password" required />
                                 </div>
                             </div>
@@ -67,5 +84,22 @@ export class LoginForm extends Component {
 
     }
 }
-
+export const ConnectedLoginForm = connect(
+    (state, ownProps) => {
+        return {
+            ...ownProps,
+            name: state.register.name,
+            mail: state.register.mail,
+            password: state.register.password,
+            passwordConfirm: state.register.passwordConfirm,
+            validationResult: validate(state.register.name, state.register.mail, state.register.password, state.register.passwordConfirm)
+        };
+    },
+    (dispatch) => {
+        return {
+            changeMail: (mail) => dispatch(changeMailAction(mail)),
+            changePassword: (password) => dispatch(changePasswordAction(password)), 
+        }
+    }
+)(LoginForm);
 

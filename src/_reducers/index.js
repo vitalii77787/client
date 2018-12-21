@@ -4,6 +4,7 @@ import { categories } from './categories.reducer';
 import {cart} from  './cart.reducer';
 import { registerModelReducer } from './registerModel.reducer';
 import { filters } from './filters.reducer';
+import { loginModelReducer } from './loginModel.reducer';
 
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   categories,
   cart,
   register: registerModelReducer,
-  filters
+  filters,
+  login:loginModelReducer
   });
  export default rootReducer;

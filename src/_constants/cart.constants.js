@@ -3,5 +3,6 @@ export const cartConstants ={
     removeFromCart: "REMOVE_FROM_CART",
     getCartProducts: "GET_CART_PRODUCTS",
     incrementProductCount: "INCREMENT_PRODUCT_COUNT",
-    decrementProductCount: "DECREMENT_PRODUCT_COUNT"
+    decrementProductCount: "DECREMENT_PRODUCT_COUNT",
+    deleteCartItem:"DELETE_CART_ITEM"
 }
