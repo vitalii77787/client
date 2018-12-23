@@ -7,37 +7,46 @@ import {
     changePasswordConfirmAction
 } from '../../../_actions/registerModel.actions';
 import { validate } from '../../../_services/user-register-validation.service';
+import {
+    registerValidation
+} from '../../../_constants/ValidationConstants/register-validation.constants';
 
- class RegisterForm extends Component {
+class RegisterForm extends Component {
     changeName = (event) => {
         const newName = event.target.value
-        
+
         this.props.changeName(newName);
     };
 
     changeMail = (event) => {
         const newMail = event.target.value
-        
+
         this.props.changeMail(newMail);
     };
 
     changePassword = (event) => {
         const newPassword = event.target.value
-        
+
         this.props.changePassword(newPassword);
     };
 
     changePasswordConfirm = (event) => {
         const newPasswordConfirm = event.target.value
-        
+
         this.props.changePasswordConfirm(newPasswordConfirm);
     };
-
+    check(param) {
+        for (let i = 0; i < this.props.validationResult.errors.length; i++) {
+            if (this.props.validationResult.errors[i].id === param) {
+                return this.props.validationResult.errors[i].text;
+            }
+        }
+    }
 
     render() {
         return (
             <div className="container" >
-                <form className="form-horizontal"  method="POST" action="/register">
+                <form className="form-horizontal" method="POST" action="/register">
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
@@ -52,7 +61,7 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-6">
                             <div className="form-group">
                                 <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div className="input-group-addon" style={{width: '2.6rem'}}><i className="fa fa-user"></i></div>
+                                    <div className="input-group-addon" style={{ width: '2.6rem' }}><i className="fa fa-user"></i></div>
                                     <input type="text" name="name" className="form-control" id="name"
                                         value={this.props.name} onChange={this.changeName}
                                         placeholder="John Doe" required autoFocus />
@@ -62,13 +71,9 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-3">
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
-                              { 
-                                  this.props.validationResult.errors.length>0?
-                                "errors":""
-                                  /* { this.props.validationResult.errors.map((error) => 
-                               error.id==="name"?
-                                (<i className="fa fa-close" key={error.id}>{error.text}</i>):{}) */
-                                }
+                                    {
+                                        this.check(registerValidation.name)
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -80,9 +85,9 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-6">
                             <div className="form-group">
                                 <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div className="input-group-addon" style={{width: '2.6rem'}}><i className="fa fa-at"></i></div>
+                                    <div className="input-group-addon" style={{ width: '2.6rem' }}><i className="fa fa-at"></i></div>
                                     <input type="text" name="email" className="form-control" id="email"
-                                     value={this.props.mail} onChange={this.changeMail}
+                                        value={this.props.mail} onChange={this.changeMail}
                                         placeholder="you@example.com" required autoFocus />
                                 </div>
                             </div>
@@ -90,12 +95,9 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-3">
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
-                                 {this.props.validationResult.errors.length>0?
-                                 "errors":""
-                                     /* { this.props.validationResult.errors.map((error) => 
-                               error.id==="mail"?
-                                (<i className="fa fa-close" key={error.id}>{error.text}</i>):{}) */
-                                } 
+                                    {
+                                        this.check(registerValidation.mail)
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -107,9 +109,9 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-6">
                             <div className="form-group has-danger">
                                 <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div className="input-group-addon" style={{width: '2.6rem'}}><i className="fa fa-key"></i></div>
+                                    <div className="input-group-addon" style={{ width: '2.6rem' }}><i className="fa fa-key"></i></div>
                                     <input type="password" name="password" className="form-control" id="password"
-                                    value={this.props.password} onChange={this.changePassword}
+                                        value={this.props.password} onChange={this.changePassword}
                                         placeholder="Password" required />
                                 </div>
                             </div>
@@ -117,7 +119,9 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-3">
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
-                                    
+                                    {
+                                        this.check(registerValidation.password)
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -129,7 +133,7 @@ import { validate } from '../../../_services/user-register-validation.service';
                         <div className="col-md-6">
                             <div className="form-group">
                                 <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div className="input-group-addon" style={{width: '2.6rem'}}>
+                                    <div className="input-group-addon" style={{ width: '2.6rem' }}>
                                         <i className="fa fa-repeat"></i>
                                     </div>
                                     <input type="password" name="password-confirmation" className="form-control"
@@ -138,14 +142,24 @@ import { validate } from '../../../_services/user-register-validation.service';
                                 </div>
                             </div>
                         </div>
+                        <div className="col-md-3">
+                            <div className="form-control-feedback">
+                                <span className="text-danger align-middle">
+                                    {
+                                        this.check(registerValidation.confirm)
+                                    }
+                                </span>
+                            </div>
+                        </div>
                     </div>
+
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
                             <button type="submit" disabled={!this.props.validationResult.isValid} className="btn btn-success"><i className="fa fa-user-plus"></i> Register</button>
                         </div>
                     </div>
-                   
+
                 </form>
             </div>
 

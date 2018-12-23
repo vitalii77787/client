@@ -8,7 +8,7 @@ export const validate = (name, mail, password, passwordConfirm) => {
 
     if (name && name.length < 3) {
         let error = {
-            id: "name",
+            id: registerValidation.name,
             text: registerValidation.incorrectName
         }
         result.isValid = false;
@@ -16,7 +16,7 @@ export const validate = (name, mail, password, passwordConfirm) => {
     }
     if (mail && !emailValid(mail)) {
         let error = {
-            id: "mail",
+            id: registerValidation.mail,
             text: registerValidation.incorrectEmail
         }
         result.isValid = false;
@@ -24,8 +24,16 @@ export const validate = (name, mail, password, passwordConfirm) => {
     }
     if (password && !passwordValid(password)) {
         let error = {
-            id: "password",
+            id: registerValidation.password,
             text: registerValidation.incorrectPassword
+        }
+        result.isValid = false;
+        result.errors.push(error);
+    }
+    if(password && passwordConfirm && !isEqual(password, passwordConfirm)){
+        let error = {
+            id: registerValidation.confirm,
+            text: registerValidation.incorrectConfirm
         }
         result.isValid = false;
         result.errors.push(error);
@@ -39,6 +47,10 @@ function emailValid(formfield) {
 }
 
 function passwordValid(formfield) {
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{4,}$/;
     return passwordRegex.test(formfield);
+}
+
+function isEqual(formfield1, formfield2){
+    return (formfield1===formfield2);
 }

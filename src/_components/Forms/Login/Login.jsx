@@ -4,7 +4,7 @@ import {
     changeMailAction,
     changePasswordAction
 } from '../../../_actions/loginModel.actions';
-
+import { validateLogin } from '../../../_services/user-login-service';
 
 export class LoginForm extends Component {
 
@@ -14,8 +14,7 @@ export class LoginForm extends Component {
     };
     changePassword = (event) => {
         const newPassword = event.target.value
-        
-        this.props.changePassword(newPassword);
+         this.props.changePassword(newPassword);
     };
 
     render() {
@@ -45,7 +44,10 @@ export class LoginForm extends Component {
                         <div className="col-md-3">
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
-
+                                {
+                                this.props.validationResult.errors.length>0?
+                                "errors":""
+                                }
                                 </span>
                             </div>
                         </div>
@@ -66,7 +68,10 @@ export class LoginForm extends Component {
                         <div className="col-md-3">
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
-                                    <i className="fa fa-close"> Example Error Message</i>
+                                {
+                                this.props.validationResult.errors.length>0?
+                                "errors":""
+                                }
                                 </span>
                             </div>
                         </div>
@@ -74,7 +79,7 @@ export class LoginForm extends Component {
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
-                            <button type="submit" className="btn btn-success"><i className="fa fa-user"></i>  Login</button>
+                            <button type="submit"  className="btn btn-success"><i className="fa fa-user"></i>  Login</button>
                         </div>
                     </div>
                 </form>
@@ -88,11 +93,9 @@ export const ConnectedLoginForm = connect(
     (state, ownProps) => {
         return {
             ...ownProps,
-            name: state.register.name,
-            mail: state.register.mail,
-            password: state.register.password,
-            passwordConfirm: state.register.passwordConfirm,
-            validationResult: validate(state.register.name, state.register.mail, state.register.password, state.register.passwordConfirm)
+            mail: state.login.email,
+            password: state.login.password,
+            validationResult: validateLogin(state.login.email, state.login.password)
         };
     },
     (dispatch) => {

@@ -9,7 +9,7 @@ import { CategoriesPage } from './_components/Category';
 import { RoutedProduct } from './_components/Product';
 import { HeaderContainer } from './_components/Header';
 import { ConnectedRegisterForm } from './_components/Forms/Register/Register';
-import { LoginForm } from './_components/Forms/Login/Login';
+import { ConnectedLoginForm } from './_components/Forms/Login/Login';
 import { WishListCart } from './_components/Header/WishListCart';
 import { Index } from './_components/IndexPage/Index';
 import { ConnectedCartContainer} from './_components/CartComponent/CartComponent';
@@ -34,7 +34,7 @@ class App extends React.Component {
                     <WishListCart/>
                             <div>
                                 <Route exact path="/" component={Index}/>
-                                <Route path="/login" component={LoginForm}/>
+                                <Route path="/login" component={ConnectedLoginForm}/>
                                 <Route path="/register" component={ConnectedRegisterForm}/>
                                 <Route path="/categories/:categoryId?" component={CategoriesPage} />
                                 <Route path="/product/:productId" component={RoutedProduct} /> 

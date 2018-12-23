@@ -5,6 +5,7 @@ import {cart} from  './cart.reducer';
 import { registerModelReducer } from './registerModel.reducer';
 import { filters } from './filters.reducer';
 import { loginModelReducer } from './loginModel.reducer';
+import { wish } from './wish.reducer';
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   cart,
   register: registerModelReducer,
   filters,
-  login:loginModelReducer
+  login:loginModelReducer,
+  wish
   });
  export default rootReducer;
