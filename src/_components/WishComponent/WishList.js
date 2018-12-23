@@ -1,14 +1,18 @@
 import React from 'react'
-import { ConnectedWishItem } from './CartItem';
+import { ConnectedWishItem } from './WishItem';
 
 
 export const WishList = ({ products }) => {
-    const wishItems= products.map(product =>
+    const wishItems = products.map(product =>
         <tr key={product.id} className="cart_item clearfix">
-            <ConnectedCartItem product={product} />
+            <ConnectedWishItem product={product} />
         </tr>
     )
     return (
-      {wishItems}
+        <table className="table table-striped table-bordered" >
+            <tbody>
+                {wishItems}
+            </tbody>
+        </table >
     )
 }

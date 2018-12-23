@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../_helpers/store';
 import { getWishProducts } from '../../_actions/wish.actions';
+import { WishList } from './WishList';
+
 
 
 export class WishComponent extends React.Component {
 	render() {
 		return this.props? (
 				<div className="container">
-					
+					<WishList products={this.props.wishProducts}/>
 				</div>
 		):(<div>Loading...</div>);
 	}

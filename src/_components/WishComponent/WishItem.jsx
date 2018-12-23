@@ -9,11 +9,13 @@ export class WishItem extends Component {
     render() {
         const { product } = this.props;
         return (
-            <tr>
-                <td><img src={Hunting_Knife} alt="" /></td>
-                <td></td>
-                <td>@mdo</td>
-            </tr>
+          <>
+                <td class="cart_item_image"><img src={Hunting_Knife} alt="" /></td>
+                <td style={{textAlign:"center", verticalAlign:"middle"}}>{product.title}</td>
+                <td style={{textAlign:"center", verticalAlign:"middle"}}>{product.text}</td>
+                <td style={{textAlign:"center", verticalAlign:"middle"}}><button className="btn btn-outline-success btn-sm">Add to cart</button></td>
+                <td style={{textAlign:"center", verticalAlign:"middle"}}><button className="btn btn-outline-danger btn-sm">Remove</button></td>
+           </>
         )
     }
 }

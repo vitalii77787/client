@@ -56,22 +56,6 @@ const defaultState = {
             product)
         }
       }
-      case productConstants.toggleWishList:{
-        let result=state.wishList.filter(ownid=>ownid==action.payload);
-        if (result.length>0)
-        {
-          return{
-            ...state,
-            wishList: state.wishList.filter(item => item !== action.payload)
-          }
-                 }
-        else{
-            return{
-              ...state,
-             wishList:[...state.wishList, action.payload]
-           }
-        }
-      }
       default:
         return state
     }

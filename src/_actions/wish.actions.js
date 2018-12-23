@@ -9,7 +9,7 @@ export const ToggleWishList=(id)=>{
 }
 export const getWishProducts = (productIds) => {
     return dispatch => {
-        wishService.getCartProducts(productIds)
+        wishService.getWishProducts(productIds)
             .then(
                 (response) => {
                     const data = response.data;
