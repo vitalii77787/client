@@ -13,8 +13,10 @@ import { product } from '../_data/product';
 
 class ProductView extends Component {
     render() {
+        const {wishList}=this.props;
         const { product } = this.props;
-        // const body = <section className="description">{product.text}</section>
+        if(product)
+        {
         return (
             <div className={product.discount ? "product_item discount" : "product_item"}>
                 <div className="product_border"></div>
@@ -30,7 +32,7 @@ class ProductView extends Component {
                         </Link>
                     </div>
                 </div>
-                <div className={product.isWish == true ? "product_fav active" : "product_fav"} onClick={() => this.props.Toggle(product.id)}>
+                <div className={( wishList.some(e=>e===product.id)) ? "product_fav active" : "product_fav"} onClick={() => this.props.Toggle(product.id)}>
                     <i className="fa fa-heart"></i>
                 </div>
                 <ul className="product_marks">
@@ -39,6 +41,7 @@ class ProductView extends Component {
                 </ul>
             </div>
         )
+                    }
     }
 }
 
@@ -47,7 +50,8 @@ export const ProductViewContainer = connect(
     (state, ownProps) => {
         return {
             ...ownProps,
-            activeProductId: state.products.activeProductId
+            activeProductId: state.products.activeProductId,
+            wishList:state.wish.wishListId
         }
     },
     (dispatch) => {

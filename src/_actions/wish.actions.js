@@ -22,7 +22,12 @@ export const getWishProducts = (productIds) => {
             );
     }
 };
-
+export const deleteWishItem=(productId)=>{
+    return{
+        type: wishConstants.deleteWishItem,
+        payload: productId
+    }
+}
 function getWishProductsLoaded(products) {
     return {
         type: wishConstants.getWishProducts,

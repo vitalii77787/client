@@ -1,5 +1,6 @@
 import { productConstants } from '../_constants/products.constants';
 import { productService } from '../_services/products.service';
+import { ToggleWishList } from './wish.actions';
 
 export const productsActions = {
     getAllProducts,
@@ -110,17 +111,11 @@ export const setActiveProduct = (id) => {
 
 export const ToggleWish=(id)=>{
     return dispatch=>{
-        dispatch(ToggleProduct(id));
         dispatch( ToggleWishList(id));
     }
 }
 
-export const ToggleWishList=(id)=>{
-    return{
-        type:productConstants.toggleWishList,
-        payload: id
-    }
-}
+
 export const ToggleProduct=(id)=>{
     return{
         type:productConstants.setToggle,

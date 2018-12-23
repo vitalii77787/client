@@ -11,6 +11,13 @@ export const WishList = ({ products }) => {
     return (
         <table className="table table-striped table-bordered" >
             <tbody>
+            <tr>
+      <th scope="col" style={{textAlign:"center", verticalAlign:"middle"}}>Image</th>
+      <th scope="col" style={{textAlign:"center", verticalAlign:"middle"}}>Title</th>
+      <th scope="col" style={{textAlign:"center", verticalAlign:"middle"}}>Description</th>
+      <th scope="col" style={{textAlign:"center", verticalAlign:"middle"}}>Add</th>
+      <th scope="col" style={{textAlign:"center", verticalAlign:"middle"}}>Remove </th>
+    </tr>
                 {wishItems}
             </tbody>
         </table >

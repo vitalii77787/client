@@ -5,6 +5,9 @@ import {
     changePasswordAction
 } from '../../../_actions/loginModel.actions';
 import { validateLogin } from '../../../_services/user-login-service';
+import {
+    loginValidation
+} from '../../../_constants/ValidationConstants/login-validation.constants';
 
 export class LoginForm extends Component {
 
@@ -16,6 +19,13 @@ export class LoginForm extends Component {
         const newPassword = event.target.value
          this.props.changePassword(newPassword);
     };
+    check(param) {
+        for (let i = 0; i < this.props.validationResult.errors.length; i++) {
+            if (this.props.validationResult.errors[i].id === param) {
+                return this.props.validationResult.errors[i].text;
+            }
+        }
+    }
 
     render() {
         return (
@@ -45,9 +55,8 @@ export class LoginForm extends Component {
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
                                 {
-                                this.props.validationResult.errors.length>0?
-                                "errors":""
-                                }
+                                        this.check(loginValidation.mail)
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -69,9 +78,8 @@ export class LoginForm extends Component {
                             <div className="form-control-feedback">
                                 <span className="text-danger align-middle">
                                 {
-                                this.props.validationResult.errors.length>0?
-                                "errors":""
-                                }
+                                        this.check(loginValidation.password)
+                                    }
                                 </span>
                             </div>
                         </div>
@@ -79,7 +87,7 @@ export class LoginForm extends Component {
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
-                            <button type="submit"  className="btn btn-success"><i className="fa fa-user"></i>  Login</button>
+                            <button type="submit" disabled={!this.props.validationResult.isValid}  className="btn btn-success"><i className="fa fa-user"></i>  Login</button>
                         </div>
                     </div>
                 </form>

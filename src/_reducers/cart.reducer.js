@@ -9,9 +9,17 @@ const defaultState = {
 export function cart(state = defaultState, action) {
   switch (action.type) {
     case cartConstants.addToCart: {
-      return {
-        ...state,
-        productsId: [...state.productsId, action.payload]
+      if(state.productsId.includes(action.payload))
+      {
+        return {
+          ...state
+        }
+      }
+      else{
+        return{
+          ...state,
+          productsId: [...state.productsId, action.payload]
+        }
       }
     }
     case cartConstants.removeFromCart: {
@@ -49,7 +57,8 @@ export function cart(state = defaultState, action) {
     case cartConstants.deleteCartItem: {
       return {
         ...state,
-        cartProducts:state.cartProducts.filter(product=>product.id!==action.payload)
+        cartProducts: state.cartProducts.filter(product => product.id !== action.payload),
+        productsId: state.productsId.filter(id => id !== action.payload)
       }
     }
     default:

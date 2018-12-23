@@ -8,7 +8,7 @@ export const validateLogin = ( mail, password) => {
 
     if (mail && !emailValid(mail)) {
         let error = {
-            id: "mail",
+            id: loginValidation.mail,
             text: loginValidation.incorrectEmail
         }
         result.isValid = false;
@@ -16,7 +16,7 @@ export const validateLogin = ( mail, password) => {
     }
     if (password && !passwordValid(password)) {
         let error = {
-            id: "password",
+            id: loginValidation.password,
             text: loginValidation.incorrectPassword
         }
         result.isValid = false;
