@@ -12,6 +12,7 @@ export const getAllCategories = () => {
         categoryService.getCategories()
             .then(
                 (response) => {
+                    console.log(response.status);
                     const data = response.data;
                     dispatch(getAllCategoriesLoaded(data));
                 },

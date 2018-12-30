@@ -20,7 +20,7 @@ class ProductView extends Component {
         return (
             <div className={product.discount ? "product_item discount" : "product_item"}>
                 <div className="product_border"></div>
-                <div className="product_image d-flex flex-column align-items-center justify-content-center"><img src={logo} alt="" /></div>
+                <div className="product_image d-flex flex-column align-items-center justify-content-center"><img className="center" src={product.photo?product.photo:""} alt="Photo" /></div>
                 <div className="product_content">
                     <div className="product_price">
                         {
@@ -28,7 +28,7 @@ class ProductView extends Component {
                         }
                     </div>
                     <div className="product_name">
-                        <Link to={`/product/${product.id}`}> {product.title}
+                        <Link to={`/product/${product.id}`}> {product.name}
                         </Link>
                     </div>
                 </div>

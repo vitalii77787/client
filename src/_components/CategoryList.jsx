@@ -9,17 +9,24 @@ class CategoryList extends Component {
     render() {
         const { categories } = this.props;
         const activeCategoryId = this.props.match.params.categoryId;
-        return (
-            <ul className="sidebar_categories">
-                {
-                    categories.map(category =>
-                        <li key={category.id} onClick={() => this.props.setActiveCategory(category.id, category.name)}>
-                            <Link to={`/categories/${category.id}`}>{category.name}</Link>
-                        </li>
-                    )
-                }
-            </ul>
-        )
+        if (categories) {
+            return (
+                <ul className="sidebar_categories">
+                    {
+                        categories.map(category =>
+                            <li key={category.id} onClick={() => this.props.setActiveCategory(category.id, category.name)}>
+                                <Link to={`/categories/${category.id}`}>{category.name}</Link>
+                            </li>
+                        )
+                    }
+                </ul>
+            )
+        }
+        else{
+            return (
+                <span>Loading...</span>
+            )
+        }
     }
 }
 
@@ -30,7 +37,9 @@ export const RoutedCategoryListContainer = withRouter(connect(
             categories: state.categories.categories
         }
     },
-    (dispatch) => { return {
-        setActiveCategory: (id, name)=>dispatch(setActiveCategory(id,name))
-    } }
+    (dispatch) => {
+        return {
+            setActiveCategory: (id, name) => dispatch(setActiveCategory(id, name))
+        }
+    }
 )(CategoryList));

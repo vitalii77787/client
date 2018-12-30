@@ -9,9 +9,9 @@ class ProductPage extends Component {
 
     render() {
         const { product } = this.props;
-        if (product.photos) {
-            let activeImage=(this.props.activeImage===0)?product.photos[0]:this.props.activeImage;
+            let activeImage=(this.props.activeImage===0)?product.photo?product.photo[0]:0:this.props.activeImage;
             return (
+                product?
                 <div className="container">
                 <div className='card'>
                     <div className="row">
@@ -19,21 +19,22 @@ class ProductPage extends Component {
                             <div className='row'>
                                 <ul className="image_list col-lg-4 order-1">
                                 {
-                                product.photos.map(photo =>
+                                    product.photo?
+                                product.photo.map(photo =>
                                         <li key={photo} onClick={() => this.props.setActiveImg(photo)}>
                                             <img src={photo} />
                                         </li>
-                                    )
+                                    ):<div></div>
                                 }
                                 </ul>
                                 <div className="col-lg-8 order-2">
-                                    <div className="image_selected"><img src={activeImage} alt="" /></div>
+                                     <div className="image_selected"><img src={activeImage} alt="" /></div> 
                                 </div>
                             </div>
                         </aside>
                         <aside className="col-sm-7">
                             <article className="card-body p-5">
-                                <h3 className="title mb-3">{product.title}</h3>
+                                <h3 className="title mb-3">{product.name}</h3>
                                 <p className="price-detail-wrap">
                                     <span className="price h3 text-warning">
                                         <span className="currency">US $</span><span className="num">{product.price}</span>
@@ -63,13 +64,9 @@ class ProductPage extends Component {
                     </div>
                 </div>
                 </div>
+                :
+                <div>Loading</div>
             )
-        }
-        else {
-            return (
-                <span>Loading...</span>
-            )
-        }
     }
 }
 
