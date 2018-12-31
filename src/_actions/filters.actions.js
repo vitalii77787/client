@@ -24,15 +24,21 @@ function getFiltersByCategoryIdLoaded(filters) {
     }
 }
 
-export function addFilterId(id){
-    return{
+export function addFilterId(id) {
+    return {
         type: filterConstants.addFilterId,
         payload: id
     }
 }
-export function removeFilterId(id){
-    return{
+export function removeFilterId(id) {
+    return {
         type: filterConstants.removeFilterId,
         payload: id
     }
 }
+export const setPageInfo=(pageInfo)=> {
+        return {
+            type: filterConstants.setPageInfo,
+            payload: pageInfo
+        }
+    }

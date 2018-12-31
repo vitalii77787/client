@@ -1,6 +1,7 @@
 import { productConstants } from '../_constants/products.constants';
 import { productService } from '../_services/products.service';
 import { ToggleWishList } from './wish.actions';
+import { setPageInfo } from './filters.actions';
 
 export const productsActions = {
     getAllProducts,
@@ -30,8 +31,10 @@ export const getAllProducts = () => {
         productService.getProducts()
             .then(
                 (response) => {
-                    const data = response.data;
+                    const data = response.data.productList;
+                    const pageInfo=response.data.pageInfo;
                     dispatch(getAllProductsLoaded(data));
+                    dispatch(setPageInfo(pageInfo));
                 },
                 error => {
                     console.log(error);

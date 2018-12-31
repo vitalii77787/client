@@ -1,33 +1,7 @@
 @charset "utf-8";
-/* CSS Document */
-
-/******************************
-
-[Table of Contents]
-
-1. Fonts
-2. Body and some general stuff
-3. Header
-	3.1 Top Bar
-	3.2 Header Main
-	3.3 Main Navigation
-	3.4 Page Menu
-4. Home
-5. Shop
-	5.1 Shop Products
-	5.2 Shop Page Navigation
-6. Shop Sidebar
-7. Recently Viewed
-8. Brands
-9. Newsletter
-10. Footer
+@import '~antd/dist/antd.css';
 
 
-******************************/
-
-/***********
-1. Fonts
-***********/
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Rubik:300,400,500,700,900');
 

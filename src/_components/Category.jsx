@@ -8,6 +8,7 @@ import InputRange from 'react-input-range';
 import '../Style/Slyder/slider-styles.css';
 import { ConnectedFilterPrice } from './FilterComponents/priceComponent';
 import { ConnectedFiltersCategoryComponent } from './FilterComponents/filterCategoryComponent';
+import {ConnectedPaginationComponent} from './FilterComponents/paginationComponent';
 
 export class CategoriesPage extends React.Component {
     render() {
@@ -58,15 +59,14 @@ export class CategoriesPage extends React.Component {
                                     </div>
                                     <RoutedCategoryProducts />
                                     <div className="shop_page_nav d-flex flex-row">
-                                        <div className="page_prev d-flex flex-column align-items-center justify-content-center"><i className="fa fa-chevron-left"></i></div>
-                                        <ul className="page_nav d-flex flex-row">
+                                        <ConnectedPaginationComponent/>
+                                        {/* <ul className="page_nav d-flex flex-row">
                                             <li className="active"><a href="#">1</a></li>
                                             <li><a href="#">2</a></li>
                                             <li><a href="#">3</a></li>
                                             <li><a href="#">...</a></li>
                                             <li><a href="#">21</a></li>
-                                        </ul>
-                                        <div className="page_next d-flex flex-column align-items-center justify-content-center"><i class="fa fa-chevron-right"></i></div>
+                                        </ul> */}
                                     </div>
 
                                 </div>

@@ -3,7 +3,13 @@ import { filterConstants } from '../_constants/filter.constants';
 
 const defaultState={
     categoryFilters:[],
-    activeFiltersIds:[]
+    activeFiltersIds:[],
+    pageInfo:{
+        currentPage:0,
+        itemsPerPage:0,
+        totalItems:0,
+        totalPages:0
+    }
 }
 
 export function filters(state = defaultState, action) {
@@ -21,6 +27,12 @@ export function filters(state = defaultState, action) {
             return{
                 ...state,
                 activeFiltersIds: state.activeFiltersIds.filter(item => item !== action.payload)
+            }
+        }
+        case filterConstants.setPageInfo:{
+            return{
+                ...state,
+                pageInfo:action.payload
             }
         }
         default:
