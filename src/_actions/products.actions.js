@@ -8,7 +8,8 @@ export const productsActions = {
     getProductsByCategory,
     setActiveProduct,
     getProductById,
-    setDefault
+    setDefault,
+    getAllProductsLoaded
 }
 export const getProductById = (productId) => {
     return dispatch => {
@@ -44,7 +45,7 @@ export const getAllProducts = () => {
     }
 };
 
-function getAllProductsLoaded(products) {
+export function getAllProductsLoaded(products) {
     return {
         type: productConstants.getAllProductsLoaded,
         payload: products

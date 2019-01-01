@@ -1,19 +1,64 @@
 import { filterConstants } from '../_constants/filter.constants';
 import { filterService } from '../_services/filter.service';
+import { store } from '../_helpers/store';
+import { productService } from '../_services/products.service';
+import { getAllProductsLoaded } from './products.actions';
 
 export const getFiltersByCategory = (categoryId) => {
     return dispatch => {
-        filterService.getFiltersByCategoryId(categoryId).
+        const pageNumber=store.getState().filters.pageInfo.currentPage;
+        const pageSize=store.getState().filters.pageInfo.itemsPerPage;
+        productService.getProductsWithParams(categoryId===0?'':categoryId, pageNumber===0?'':pageNumber, pageSize===0?'':pageSize).
             then(
                 (response) => {
-                    const data = response.data;
-                    dispatch(getFiltersByCategoryIdLoaded(data));
+                    const data = response.data.productList;
+                    const pageInfo=response.data.pageInfo;
+                    dispatch(getAllProductsLoaded(data));
+                    dispatch(setPageInfo(pageInfo));
                 },
                 error => {
                     console.log(error);
                     // dispatch(failure(id, error));
                 }
             );
+    }
+}
+
+export const onPageChange = (pageNumber) => {
+    return dispatch => {
+        const categoryId = store.getState().categories.activeCategoryId;
+        const pageSize=store.getState().filters.pageInfo.itemsPerPage;
+        productService.getProductsWithParams(categoryId===0?'':categoryId, pageNumber, pageSize).
+            then(
+                (response) => {
+                    const data = response.data.productList;
+                    const pageInfo=response.data.pageInfo;
+                    dispatch(getAllProductsLoaded(data));
+                    dispatch(setPageInfo(pageInfo));
+                },
+                error => {
+                    console.log(error);
+                    // dispatch(failure(id, error));
+                }
+            );
+    }
+}
+export const onSizeChange = (current, pageSize) => {
+    return dispatch => {
+        const categoryId = store.getState().categories.activeCategoryId;
+        productService.getProductsWithParams(categoryId===0?'':categoryId, current, pageSize).
+        then(
+            (response) => {
+                const data = response.data.productList;
+                const pageInfo=response.data.pageInfo;
+                dispatch(getAllProductsLoaded(data));
+                dispatch(setPageInfo(pageInfo));
+            },
+            error => {
+                console.log(error);
+                // dispatch(failure(id, error));
+            }
+        );
     }
 }
 
@@ -36,9 +81,9 @@ export function removeFilterId(id) {
         payload: id
     }
 }
-export const setPageInfo=(pageInfo)=> {
-        return {
-            type: filterConstants.setPageInfo,
-            payload: pageInfo
-        }
+export const setPageInfo = (pageInfo) => {
+    return {
+        type: filterConstants.setPageInfo,
+        payload: pageInfo
     }
+}

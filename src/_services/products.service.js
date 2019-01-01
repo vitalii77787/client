@@ -4,11 +4,26 @@ import axios from 'axios';
 export const productService = {
     getProducts,
     getProductsByCategory,
-    getProductById
+    getProductById,
+    getProductsWithParams
 }
 
 function getProducts() {
     return axios.get('http://localhost:49274/api/product/products');
+    //return Promise.resolve({ data: products });
+}
+function getProductsWithParams() {
+
+    let category=arguments[0];
+    let pagenum=arguments[1];
+    let pageSize=arguments[2];
+    return axios.get('http://localhost:49274/api/product/products', {
+        params: {
+            categoryId: category,
+            page:pagenum,
+            pagesize: pageSize
+        }
+    });
     //return Promise.resolve({ data: products });
 }
 function getProductById(productId) {
