@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAllProducts, getProductsByCategory } from '../_actions/products.actions';
+import { getAllProducts } from '../_actions/products.actions';
 import { withRouter } from 'react-router';
 import { store } from '../_helpers/store';
 import { ProductList } from './ProductList';
 import { setDefaultCategory } from '../_actions/categories.actions';
+import { getFiltersByCategory } from '../_actions/filters.actions';
 
 class ProductsPage extends React.Component {
     render() {
@@ -27,7 +28,7 @@ export class CategoryProducts extends React.Component {
     componentDidMount() {
         const categoryId = this.props.match.params.categoryId;
         if (categoryId) {
-            store.dispatch(getProductsByCategory(categoryId))
+            store.dispatch(getFiltersByCategory(categoryId))
         } else {
             store.dispatch(getAllProducts())
         }
@@ -37,15 +38,15 @@ export class CategoryProducts extends React.Component {
         if (this.props.match.params.categoryId !== prevProps.match.params.categoryId) {
             const categoryId = this.props.match.params.categoryId;
             if (categoryId) {
-                store.dispatch(getProductsByCategory(categoryId))
+                store.dispatch(getFiltersByCategory(categoryId))
             } else {
                 store.dispatch(getAllProducts())
             }
         }
     }
-    componentWillUnmount() {
-        store.dispatch(setDefaultCategory());
-      }
+    // componentWillUnmount() {
+    //     store.dispatch(setDefaultCategory());
+    //   }
 
     render() {
         return (

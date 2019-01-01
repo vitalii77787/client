@@ -7,7 +7,8 @@ const defaultState = {
     activeProductId: 0,
     productActiveImage:0,
     activeSortLabel:'default',
-    priceValue:{min:0, max:1000}
+    //priceValue:{min:0, max:1000}
+    priceValue:[0,1000]
   };
 
   export function products(state = defaultState, action) {

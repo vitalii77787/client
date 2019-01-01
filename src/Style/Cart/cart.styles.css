@@ -67,6 +67,10 @@
 	height: 133px;
 	float: left;
 }
+.cart_item_image img{
+	width: 100px;
+	height: 100px;
+}
 .cart_item_image img
 {
 	max-width: 100%;

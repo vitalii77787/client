@@ -22,7 +22,7 @@ class PaginationComponent extends Component {
     {
     return (
       <div>
-        <Pagination showSizeChanger onShowSizeChange={this.onShowSizeChange} defaultCurrent={pageInfo.currentPage} total={pageInfo.totalItems} defaultPageSize={pageInfo.itemsPerPage} onChange={this.onChange} />
+        <Pagination  showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`} showSizeChanger onShowSizeChange={this.onShowSizeChange} defaultCurrent={pageInfo.currentPage} total={pageInfo.totalItems} defaultPageSize={pageInfo.itemsPerPage} onChange={this.onChange} />
       </div>
     );
     }
