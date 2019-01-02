@@ -6,6 +6,7 @@ import { registerModelReducer } from './registerModel.reducer';
 import { filters } from './filters.reducer';
 import { loginModelReducer } from './loginModel.reducer';
 import { wish } from './wish.reducer';
+import { authentication } from './user.reducer';
 
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   register: registerModelReducer,
   filters,
   login:loginModelReducer,
-  wish
+  wish,
+  authentication
   });
  export default rootReducer;

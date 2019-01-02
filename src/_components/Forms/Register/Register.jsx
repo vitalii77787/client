@@ -10,6 +10,7 @@ import { validate } from '../../../_services/user-register-validation.service';
 import {
     registerValidation
 } from '../../../_constants/ValidationConstants/register-validation.constants';
+import { registerUser } from '../../../_actions/user.actions';
 
 class RegisterForm extends Component {
     changeName = (event) => {
@@ -43,10 +44,14 @@ class RegisterForm extends Component {
         }
     }
 
+    onSubmit=(e)=> {
+        e.preventDefault();
+        this.props.register().then(this.props.history.push("/"));
+        }
     render() {
         return (
             <div className="container" >
-                <form className="form-horizontal" method="POST" action="/register">
+                <form className="form-horizontal" onSubmit={this.onSubmit}>
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
@@ -184,7 +189,8 @@ export const ConnectedRegisterForm = connect(
             changeName: (name) => dispatch(changeNameAction(name)),
             changeMail: (mail) => dispatch(changeMailAction(mail)),
             changePassword: (password) => dispatch(changePasswordAction(password)),
-            changePasswordConfirm: (passwordConfirm) => dispatch(changePasswordConfirmAction(passwordConfirm))
+            changePasswordConfirm: (passwordConfirm) => dispatch(changePasswordConfirmAction(passwordConfirm)),
+            register:()=>dispatch(registerUser())
         }
     }
 )(RegisterForm);

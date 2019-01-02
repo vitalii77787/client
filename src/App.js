@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { history } from './_helpers/history';
 import { FooterContainer } from './_components/Footer';
@@ -12,7 +12,7 @@ import { ConnectedRegisterForm } from './_components/Forms/Register/Register';
 import { ConnectedLoginForm } from './_components/Forms/Login/Login';
 import { WishListCart } from './_components/Header/WishListCart';
 import { Index } from './_components/IndexPage/Index';
-import { ConnectedCartContainer} from './_components/CartComponent/CartComponent';
+import { ConnectedCartContainer } from './_components/CartComponent/CartComponent';
 import { ConnectedWishContainer } from './_components/WishComponent/WishComponent';
 
 
@@ -29,23 +29,27 @@ class App extends React.Component {
 
     render() {
         return (
-                <Router history={history}>
+            <Router history={history}>
                 <div>
-                    <HeaderContainer/>
-                    <WishListCart/>
-                            <div>
-                                <Route exact path="/" component={Index}/>
-                                <Route path="/login" component={ConnectedLoginForm}/>
-                                <Route path="/register" component={ConnectedRegisterForm}/>
-                                <Route path="/categories/:categoryId?" component={CategoriesPage} />
-                                <Route path="/product/:productId" component={RoutedProduct} /> 
-                                <Route path="/cart" component={ConnectedCartContainer} />
-                                <Route path="/wish" component={ConnectedWishContainer} />
-                            </div>
+                    <HeaderContainer />
+                    <WishListCart />
+                    <Switch>
+                        <Route exact path="/" component={Index} />
+                        {!this.props.isLogin &&
+                            <Route path="/login" component={ConnectedLoginForm} />
+                        }
+                        {!this.props.isLogin &&
+                            <Route path="/register" component={ConnectedRegisterForm} />
+                        }
+                        <Route path="/categories/:categoryId?" component={CategoriesPage} />
+                        <Route path="/product/:productId" component={RoutedProduct} />
+                        <Route path="/cart" component={ConnectedCartContainer} />
+                        <Route path="/wish" component={ConnectedWishContainer} />
+                    </Switch>
 
-                        <FooterContainer />
-                        </div>
-                </Router>
+                    <FooterContainer />
+                </div>
+            </Router>
         );
     }
 }
@@ -53,7 +57,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
     const { alert } = state;
     return {
-        alert
+        isLogin: state.authentication.logginIn
     };
 }
 

@@ -22,22 +22,22 @@ export const validate = (name, mail, password, passwordConfirm) => {
         result.isValid = false;
         result.errors.push(error);
     }
-    if (password && !passwordValid(password)) {
-        let error = {
-            id: registerValidation.password,
-            text: registerValidation.incorrectPassword
-        }
-        result.isValid = false;
-        result.errors.push(error);
-    }
-    if(password && passwordConfirm && !isEqual(password, passwordConfirm)){
-        let error = {
-            id: registerValidation.confirm,
-            text: registerValidation.incorrectConfirm
-        }
-        result.isValid = false;
-        result.errors.push(error);
-    }
+    // if (password && !passwordValid(password)) {
+    //     let error = {
+    //         id: registerValidation.password,
+    //         text: registerValidation.incorrectPassword
+    //     }
+    //     result.isValid = false;
+    //     result.errors.push(error);
+    // }
+    // if(password && passwordConfirm && !isEqual(password, passwordConfirm)){
+    //     let error = {
+    //         id: registerValidation.confirm,
+    //         text: registerValidation.incorrectConfirm
+    //     }
+    //     result.isValid = false;
+    //     result.errors.push(error);
+    // }
     return result;
 }
 
@@ -47,8 +47,8 @@ function emailValid(formfield) {
 }
 
 function passwordValid(formfield) {
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{4,}$/;
-    return passwordRegex.test(formfield);
+     var passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{6,20}$/;
+     return passwordRegex.test(formfield);
 }
 
 function isEqual(formfield1, formfield2){
