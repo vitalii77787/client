@@ -3,7 +3,7 @@ import {categoryConstants} from '../_constants/categories.constants'
 
 const defaultStatecategories = {
     categories: [],
-    activeCategoryId: 0,
+    activeCategoryId: null,
     activeCategoryName: ''
   };
   export function categories(state = defaultStatecategories, action) {

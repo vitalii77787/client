@@ -5,8 +5,8 @@ const defaultState={
     categoryFilters:[],
     activeFiltersIds:[],
     pageInfo:{
-        currentPage:0,
-        itemsPerPage:0,
+        currentPage:1,
+        itemsPerPage:20,
         totalItems:0,
         totalPages:0
     }

@@ -12,16 +12,12 @@ function getProducts() {
     return axios.get('http://localhost:49274/api/product/products');
     //return Promise.resolve({ data: products });
 }
-function getProductsWithParams() {
-
-    let category=arguments[0];
-    let pagenum=arguments[1];
-    let pageSize=arguments[2];
+function getProductsWithParams(categoryId, pageNumber, pageSize) {
     return axios.get('http://localhost:49274/api/product/products', {
         params: {
-            categoryId: category,
-            page:pagenum,
-            pagesize: pageSize
+            categoryId: categoryId,
+            pageNumber:pageNumber,
+            pageSize: pageSize
         }
     });
     //return Promise.resolve({ data: products });
@@ -53,7 +49,7 @@ function getProductById(productId) {
     // return Promise.resolve({ data: result});
 }
 function getProductsByCategory(categoryId) {
-    return axios.get('http://localhost:49274/api/product/categoryproducts', {
+    return axios.get('http://localhost:49274/api/product/products', {
         params: {
             categoryId: categoryId
         }

@@ -6,9 +6,7 @@ import { getAllProductsLoaded } from './products.actions';
 
 export const getFiltersByCategory = (categoryId) => {
     return dispatch => {
-        const pageNumber=store.getState().filters.pageInfo.currentPage;
-        const pageSize=store.getState().filters.pageInfo.itemsPerPage;
-        productService.getProductsWithParams(categoryId===0?'':categoryId, pageNumber===0?'':pageNumber, pageSize===0?'':pageSize).
+        productService.getProductsByCategory(categoryId)
             then(
                 (response) => {
                     const data = response.data.productList;
@@ -28,7 +26,7 @@ export const onPageChange = (pageNumber) => {
     return dispatch => {
         const categoryId = store.getState().categories.activeCategoryId;
         const pageSize=store.getState().filters.pageInfo.itemsPerPage;
-        productService.getProductsWithParams(categoryId===0?'':categoryId, pageNumber, pageSize).
+        productService.getProductsWithParams(categoryId, pageNumber, pageSize).
             then(
                 (response) => {
                     const data = response.data.productList;
@@ -46,7 +44,7 @@ export const onPageChange = (pageNumber) => {
 export const onSizeChange = (current, pageSize) => {
     return dispatch => {
         const categoryId = store.getState().categories.activeCategoryId;
-        productService.getProductsWithParams(categoryId===0?'':categoryId, current, pageSize).
+        productService.getProductsWithParams(categoryId===0?null:categoryId, current, pageSize).
         then(
             (response) => {
                 const data = response.data.productList;

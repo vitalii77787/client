@@ -46,7 +46,7 @@ class RegisterForm extends Component {
 
     onSubmit=(e)=> {
         e.preventDefault();
-        this.props.register().then(this.props.history.push("/"));
+        this.props.register();
         }
     render() {
         return (
@@ -61,7 +61,7 @@ class RegisterForm extends Component {
                     </div>
                     <div className="row">
                         <div className="col-md-3 field-label-responsive">
-                            <label for="name">Name</label>
+                            <label htmlFor="name">Name</label>
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
@@ -133,7 +133,7 @@ class RegisterForm extends Component {
                     </div>
                     <div className="row">
                         <div className="col-md-3 field-label-responsive">
-                            <label for="password">Confirm Password</label>
+                            <label htmlFor="password">Confirm Password</label>
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
