@@ -8,6 +8,11 @@ const defaultState = {
 
 export function cart(state = defaultState, action) {
   switch (action.type) {
+    case cartConstants.getCartProductLoaded:{
+      return {
+        ...state, cartProducts:[...state.cartProducts, action.payload]
+      }
+    }
     case cartConstants.addToCart: {
       if(state.productsId.includes(action.payload))
       {

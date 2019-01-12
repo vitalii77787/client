@@ -1,4 +1,5 @@
 export const cartConstants ={
+    getCartProductLoaded:"GET_CART_PRODUCT_LOADED",
     addToCart:"ADD_TO_CART",
     removeFromCart: "REMOVE_FROM_CART",
     getCartProducts: "GET_CART_PRODUCTS",

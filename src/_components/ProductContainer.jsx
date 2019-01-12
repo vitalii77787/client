@@ -58,7 +58,7 @@ class ProductPage extends Component {
                                     <dd>Russia, USA, and Europe</dd>
                                 </dl>
                                 <div className="btn btn-lg btn-primary text-uppercase"> Buy now </div>
-                                <div className="btn btn-lg btn-outline-primary text-uppercase" onClick={()=>this.props.addToCart(product.id)}> <i className="fas fa-shopping-cart"></i> Add to cart </div>
+                                <div className="btn btn-lg btn-outline-primary text-uppercase" onClick={()=>this.props.addToCart(product.id)}> <i className="fa fa-shopping-cart"></i> Add to cart </div>
                             </article>
                         </aside>
                     </div>

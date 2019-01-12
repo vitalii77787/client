@@ -13,7 +13,7 @@ export const ProductList = ({ products }) => {
 
     return (
         <Masonry
-        className={'product-wrapper'} // default ''
+        className={'product-grid'} // default ''
         elementType={'div'} // default 'div'
         disableImagesLoaded={false} // default false
         updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false

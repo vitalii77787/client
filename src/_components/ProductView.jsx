@@ -18,13 +18,13 @@ class ProductView extends Component {
         if(product)
         {
         return (
-            <div className={product.discount ? "product_item discount" : "product_item"}>
+            <div className={product.discount!==0 ? "product_item discount" : "product_item"}>
                 <div className="product_border"></div>
                 <div className="product_image d-flex flex-column align-items-center justify-content-center"><img className="center" src={product.photo?product.photo:""} alt="Photo" /></div>
                 <div className="product_content">
                     <div className="product_price">
                         {
-                            product.discount ? <div className="discounted_price">${product.price - (product.price * product.discount) / 100}<span>${product.price}</span></div> : <div>${product.price}</div>
+                            product.discount!==0 ? <div className="discounted_price">${Math.round(product.price -(product.price * product.discount) / 100)}<span>${product.price}</span></div> : <div>${product.price}</div>
                         }
                     </div>
                     <div className="product_name">
@@ -36,8 +36,8 @@ class ProductView extends Component {
                     <i className="fa fa-heart"></i>
                 </div>
                 <ul className="product_marks">
-                    <li className="product_mark product_discount">-{product.discount}%</li>
-                    <li className="product_mark product_new">new</li>
+                        {product.discount===0?'':<li className="product_mark product_discount">-{product.discount}%</li>}
+                         <li className="product_mark product_new">new</li>
                 </ul>
             </div>
         )

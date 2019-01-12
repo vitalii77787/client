@@ -6,7 +6,7 @@ import { getAllProductsLoaded } from './products.actions';
 
 export const getFiltersByCategory = (categoryId) => {
     return dispatch => {
-        productService.getProductsByCategory(categoryId)
+        productService.getProductsByCategory(categoryId).
             then(
                 (response) => {
                     const data = response.data.productList;
