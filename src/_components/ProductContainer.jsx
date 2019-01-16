@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../Style/ProductInfo/productinfo.css'
 import { setActiveImage } from '../_actions/products.actions';
-import { addToCart } from '../_actions/productCart.actions';
+import { getCartItem } from '../_actions/productCart.actions';
 
 
 class ProductPage extends Component {
 
     render() {
         const { product } = this.props;
+        const {products}=this.props;
             let activeImage=(this.props.activeImage===0)?product.photo?product.photo[0]:0:this.props.activeImage;
             return (
                 product?
@@ -58,7 +59,10 @@ class ProductPage extends Component {
                                     <dd>Russia, USA, and Europe</dd>
                                 </dl>
                                 <div className="btn btn-lg btn-primary text-uppercase"> Buy now </div>
-                                <div className="btn btn-lg btn-outline-primary text-uppercase" onClick={()=>this.props.addToCart(product.id)}> <i className="fa fa-shopping-cart"></i> Add to cart </div>
+                                {
+                                    (products.length && products.some(cartproduct=>cartproduct.id===product.id))?<button className="btn btn-lg btn-outline-primary text-uppercase" disabled> <i className="fa fa-shopping-cart"></i> In cart</button>:
+                                    <div className="btn btn-lg btn-outline-primary text-uppercase" onClick={()=>this.props.addToCart(product.id)}> <i className="fa fa-shopping-cart"></i> Add to cart </div>
+                                }
                             </article>
                         </aside>
                     </div>
@@ -75,11 +79,12 @@ export const ProductContainer = connect(
         return {
             ...ownProps,
             product: state.products.product,
-            activeImage:state.products.productActiveImage
+            activeImage:state.products.productActiveImage,
+            products: state.cart.cartProducts
         };
     },
     (dispatch) => {   return {
         setActiveImg: (src) => dispatch(setActiveImage(src)),
-        addToCart:(id)=>dispatch(addToCart(id))
+        addToCart:(id)=>dispatch(getCartItem(id))
     } }
 )(ProductPage);

@@ -27,7 +27,7 @@ export const ConnectedCart = connect(
     (state, ownProps) => {
         return {
             ...ownProps,
-            count: state.cart.productsId.length,
+            count: state.cart.cartProducts.length,
         };
     },
     (dispatch) => { return {}; }

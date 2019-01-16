@@ -1,6 +1,14 @@
 import { cartConstants } from '../_constants/cart.constants';
 import { cartService } from '../_services/cart.service';
+import { notifyConstants } from '../_constants/notification.constants';
+import {  notification } from 'antd';
 
+ const openNotification = () => {
+    notification['success']({
+        message: notifyConstants.itemSuccessfullyAdded,
+        description: 'Added to cart!',
+      });
+    };
 export const addToCart = (id) => {
     return {
         type: cartConstants.addToCart,
@@ -11,7 +19,7 @@ export const addToCart = (id) => {
 
 export const getCartItem = (id) => {
     return dispatch => {
-        cartService.getCartProduct
+        cartService.getCartProduct(id)
             .then(
                 (response) => {
                     const data = response.data;
@@ -38,7 +46,9 @@ export const getCartProducts = (productIds) => {
             );
     }
 };
+
 function getCartProductLoaded(data){
+    openNotification();
     return {
         type:cartConstants.getCartProductLoaded,
         payload:data
@@ -51,20 +61,20 @@ function getCartProductsLoaded(products) {
     }
 }
 
-export function incrementCartProduct(id) {
-    return {
+ export const incrementCartProduct=(id)=> {
+    return  {
         type: cartConstants.incrementProductCount,
         payload: id
     }
 }
 
-export function decrementCartProduct(id) {
+export const decrementCartProduct=(id)=> {
     return {
         type: cartConstants.decrementProductCount,
         payload: id
     }
 }
-export function deleteCartItem(id) {
+export const deleteCartItem=(id)=> {
     return {
         type: cartConstants.deleteCartItem,
         payload: id

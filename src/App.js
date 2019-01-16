@@ -12,7 +12,7 @@ import { ConnectedRegisterForm } from './_components/Forms/Register/Register';
 import { ConnectedLoginForm } from './_components/Forms/Login/Login';
 import { WishListCart } from './_components/Header/WishListCart';
 import { Index } from './_components/IndexPage/Index';
-import { ConnectedCartContainer } from './_components/CartComponent/CartComponent';
+import { CartContainer} from './_components/CartComponent/CartComponent';
 import { ConnectedWishContainer } from './_components/WishComponent/WishComponent';
 
 
@@ -43,7 +43,7 @@ class App extends React.Component {
                         }
                         <Route path="/categories/:categoryId?" component={CategoriesPage} />
                         <Route path="/product/:productId" component={RoutedProduct} />
-                        <Route path="/cart" component={ConnectedCartContainer} />
+                        <Route path="/cart" component={CartContainer} />
                         <Route path="/wish" component={ConnectedWishContainer} />
                     </Switch>
 

@@ -21,7 +21,7 @@ export class CartComponent extends React.Component {
 								<div className="order_total">
 									<div className="order_total_content text-md-right">
 										<div className="order_total_title">Order Total:</div>
-										<div className="order_total_amount">${this.props.cartProducts.reduce((sum,i)=>(sum+=i.count*i.price),0)}</div>
+										<div className="order_total_amount">${this.props.cartProducts.reduce((sum,i)=>(sum+=i.quantity*Math.round(i.price)),0)}</div>
 									</div>
 								</div>
 								<div className="cart_buttons">
@@ -45,11 +45,11 @@ export const ConnectedCartComponent = connect(
 	(dispatch) => { return {} }
 )(CartComponent);
 
-class CartContainer extends React.Component{
-    componentDidMount() {
-		const {productIds} = this.props;
-        store.dispatch(getCartProducts(productIds))
-    }
+export class CartContainer extends React.Component{
+    // componentDidMount() {
+	// 	const {productIds} = this.props;
+    //     store.dispatch(getCartProducts(productIds))
+    // }
 
     render(){
         return(
@@ -58,11 +58,11 @@ class CartContainer extends React.Component{
     }
 }
 
-export const ConnectedCartContainer = connect(
-    (state) => {
-        return {
-           productIds: state.cart.productsId
-        };
-    },
-    (dispatch) => { return {} }
-)(CartContainer);
+// export const ConnectedCartContainer = connect(
+//     (state) => {
+//         return {
+//            productIds: state.cart.productsId
+//         };
+//     },
+//     (dispatch) => { return {} }
+// )(CartContainer);
