@@ -16,7 +16,7 @@ export class WishItem extends Component {
                     <td class="cart_item_image"><img src={product.photo} alt="" /></td>
                     <td style={{ textAlign: "center", verticalAlign: "middle" }}>{product.name}</td>
                     <td style={{ textAlign: "center", verticalAlign: "middle" }}>{product.description}</td>
-            <td style={{ textAlign: "center", verticalAlign: "middle" }}><button   className="btn btn-outline-success btn-sm" onClick={() => this.props.AddToCart(product.id)}>Add to cart</button></td>
+            <td style={{ textAlign: "center", verticalAlign: "middle" }}><button disabled={(products.length && products.some(cartproduct=>cartproduct.id===product.id))}  className="btn btn-outline-success btn-sm" onClick={() => this.props.AddToCart(product.id)}>Add to cart</button></td>
                     <td style={{ textAlign: "center", verticalAlign: "middle" }}><button className="btn btn-outline-danger btn-sm" onClick={() => this.props.Delete(product.id)}>Remove</button></td>
                 </React.Fragment>
             )
