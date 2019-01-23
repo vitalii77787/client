@@ -7,6 +7,7 @@ import { filters } from './filters.reducer';
 import { loginModelReducer } from './loginModel.reducer';
 import { wish } from './wish.reducer';
 import { authentication } from './user.reducer';
+import { order } from './order.reducer';
 
 
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   filters,
   login:loginModelReducer,
   wish,
-  authentication
+  authentication,
+  order
   });
  export default rootReducer;

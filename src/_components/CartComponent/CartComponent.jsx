@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../../Style/Cart/cart.styles.css'
 import { CartList } from './CartList';
+import { Link } from 'react-router-dom';
 import { store } from '../../_helpers/store';
 import { getCartProducts } from '../../_actions/productCart.actions';
 
@@ -26,7 +27,7 @@ export class CartComponent extends React.Component {
 								</div>
 								<div className="cart_buttons">
 									<button type="button" className="button cart_button_clear">Return to shopping</button>
-									<button type="button" className="button cart_button_checkout">Order</button>
+									<Link to="/order">Order</Link>
 								</div>
 							</div>
 						</div>

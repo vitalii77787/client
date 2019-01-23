@@ -14,6 +14,7 @@ import { WishListCart } from './_components/Header/WishListCart';
 import { Index } from './_components/IndexPage/Index';
 import { CartContainer} from './_components/CartComponent/CartComponent';
 import { ConnectedWishContainer } from './_components/WishComponent/WishComponent';
+import { OrderFormContainer } from './_components/Forms/Order/Order';
 
 
 
@@ -45,6 +46,7 @@ class App extends React.Component {
                         <Route path="/product/:productId" component={RoutedProduct} />
                         <Route path="/cart" component={CartContainer} />
                         <Route path="/wish" component={ConnectedWishContainer} />
+                        {!this.props.isValidOrder && <Route path="/order" component={OrderFormContainer}/>}
                     </Switch>
 
                     <FooterContainer />
@@ -57,7 +59,8 @@ class App extends React.Component {
 function mapStateToProps(state) {
     const { alert } = state;
     return {
-        isLogin: state.authentication.logginIn
+        isLogin: state.authentication.logginIn,
+        isValidOrder: state.order.orderLine.isValid
     };
 }
 
