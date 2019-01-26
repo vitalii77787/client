@@ -76,6 +76,12 @@ export function order(state = defaultState, action) {
         cities:state.areas.filter(item=>item.name===action.payload).map(item=>item.areas)[0]
       }
     }
+    case orderConstants.setOrderLine:{
+      return{
+        ...state,
+        orderLine:action.payload
+      }
+    }
     case orderConstants.setAreas:{
       return {
         ...state,

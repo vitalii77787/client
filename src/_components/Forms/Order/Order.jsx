@@ -188,16 +188,19 @@ const OrderForm = Form.create({
 
 class FormWrapper extends React.Component {
   componentDidMount() {
-    this.props.resetForm();
     this.props.getAreasData();
+  }
+
+  componentWillUnmount(){
+    this.props.resetForm();
   }
 
   handleFormChange = (changedFields) => {
     this.props.updateOrder(changedFields);
   }
 
-  handleSubmit = (e) => {
-    this.props.submitData(e);
+  handleSubmit = (values) => {
+    this.props.submitData(values, this.props.fields.orderLine);
   }
   render() {
     const { fields } = this.props;
@@ -224,7 +227,7 @@ export const OrderFormContainer = connect(
       updateOrder: (changedFields) => dispatch(updateFields(changedFields)),
       resetForm: () => dispatch(setDefault()),
       getAreasData: () => dispatch(getAreas()),
-      submitData: (values)=>{dispatch(PostOrder(values))}
+      submitData: (values, orderLine)=>{dispatch(PostOrder(values,orderLine))}
 
     }
   }

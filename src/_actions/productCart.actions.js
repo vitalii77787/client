@@ -2,6 +2,8 @@ import { cartConstants } from '../_constants/cart.constants';
 import { cartService } from '../_services/cart.service';
 import { notifyConstants } from '../_constants/notification.constants';
 import {  notification } from 'antd';
+import { orderConstants } from '../_constants/order.constants';
+import { history } from '../_helpers/history';
 
  const openNotification = () => {
     notification['success']({
@@ -16,7 +18,19 @@ export const addToCart = (id) => {
     }
 }
 
-
+export const addOrderLine=(isvalid, id, count)=>{
+    return dispatch=>{
+        dispatch({
+            type:orderConstants.setOrderLine,
+            payload: {
+                isValid:isvalid,
+                productId:id,
+                productCount:count
+            }
+        })
+        history.push('/order');
+    }
+}
 export const getCartItem = (id) => {
     return dispatch => {
         cartService.getCartProduct(id)

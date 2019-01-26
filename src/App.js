@@ -46,7 +46,7 @@ class App extends React.Component {
                         <Route path="/product/:productId" component={RoutedProduct} />
                         <Route path="/cart" component={CartContainer} />
                         <Route path="/wish" component={ConnectedWishContainer} />
-                        {!this.props.isValidOrder && <Route path="/order" component={OrderFormContainer}/>}
+                        {this.props.isValidOrder && <Route path="/order" component={OrderFormContainer}/>}
                     </Switch>
 
                     <FooterContainer />

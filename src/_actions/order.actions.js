@@ -1,6 +1,7 @@
 import { orderConstants } from '../_constants/order.constants';
 import { order } from '../_reducers/order.reducer';
 import { orderService } from '../_services/order.service';
+import { history } from '../_helpers/history';
 
 
 export const updateFields = (changedFields) => {
@@ -10,27 +11,37 @@ export const updateFields = (changedFields) => {
             dispatch(updateOrderState(changedFields));
         }
     }
-    // else if (changedFields.userSurname) {
-    //     return dispatch => {
-    //         dispatch( updateSurnameValue(changedFields.userSurname.value));
-    //     }
-    // }
-    // else if (changedFields.userPhone) {
-    //     console.log(changedFields.userPhone.value);
-    // }
-    // else if (changedFields.userPay) {
-    //     changedFields.userPay.value.map(value => console.log(value));
-    // }
-    // return {
-    //     type: orderConstants.updateState,
-    //     payload: changedFields
-    // }
     return dispatch=>{
         dispatch(updateOrderState(changedFields))
     };
 }
-export const PostOrder=(values)=>{
-    console.log(values);
+export const PostOrder=(values, orderLine)=>{
+    const orderModel={
+        productId: orderLine.productId,
+        quantity: orderLine.productCount,
+        payMethod: values.userPay,
+        userName: values.userName,
+        userSurname: values.userSurname,
+        userPhone: values.userPhone,
+        userEmail: values.userEmail,
+        userDelivery: values.userDelivery,
+        userArea: values.userArea,
+        userCity: values.userCity,
+        userStreet: values.userStreet,
+        userHouse: values.userHouse,
+        userFlat: values.userFlat?values.userFlat:''
+    }
+    return dispatch=>{
+        orderService.postOrder(orderModel).then(
+            (response)=>{
+                console.log(response);
+            },
+            error=>{
+                console.log(error);
+            }
+        );
+        history.push('/categories');
+    }
 }
 export const getAreas = () => {
     return dispatch => {

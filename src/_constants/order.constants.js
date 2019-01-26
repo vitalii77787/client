@@ -1,4 +1,5 @@
 export const orderConstants ={
+   setOrderLine: 'SET_ORDER_LINE',
    updateState:'UPDATE_STATE',
    updateName:'UPDATE_NAME',
    updateSurname:'UPDATE_SURNAME',

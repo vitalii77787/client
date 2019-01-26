@@ -9,7 +9,7 @@ import { getFiltersByCategory } from '../_actions/filters.actions';
 
 class ProductsPage extends React.Component {
     render() {
-        return this.props.products.length ?
+        return this.props.products?
             (<ProductList products={this.props.products} />) :
             (<div> No Products </div>);
     }
