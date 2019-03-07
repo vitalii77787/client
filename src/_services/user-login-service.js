@@ -31,6 +31,6 @@ function emailValid(formfield) {
 }
 
 function passwordValid(formfield) {
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{4,}$/;
+    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/;
     return passwordRegex.test(formfield);
 }

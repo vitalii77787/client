@@ -38,10 +38,19 @@ const defaultState = {
         return { ...state, productActiveImage: action.payload };
       };
       case productConstants.sortProducts:{
+        let newProducts = [ ...state.products ];
+        if (action.payload === "name") {
+          newProducts = newProducts.sort(sortByKeyText(action.payload));
+        }
+        else {
+          newProducts = newProducts.sort(sortByKeyNumber(action.payload));
+        }
+  
         return {
-          ...state, products: state.products.slice().sort(sortByKey(action.payload))
+          ...state, products: newProducts
         }
       }
+  
       case productConstants.setSortLabel:{
         return{
           ...state, activeSortLabel:action.payload
@@ -62,4 +71,5 @@ const defaultState = {
     }
   }
 
-  const sortByKey = key => (a, b) => a[key] > b[key]
+  const sortByKeyNumber = key => (a, b) => a[key] - b[key];
+const sortByKeyText = key => (a, b) => a[key].localeCompare(b[key]);

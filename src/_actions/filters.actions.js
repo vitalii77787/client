@@ -9,7 +9,7 @@ export const getFiltersByCategory = (categoryId) => {
         productService.getProductsByCategory(categoryId).
             then(
                 (response) => {
-                    const data = response.data.productList;
+                    const data = response.data.paginatedList;
                     const pageInfo=response.data.pageInfo;
                     dispatch(getAllProductsLoaded(data));
                     dispatch(setPageInfo(pageInfo));
@@ -29,7 +29,7 @@ export const onPageChange = (pageNumber) => {
         productService.getProductsWithParams(categoryId, pageNumber, pageSize).
             then(
                 (response) => {
-                    const data = response.data.productList;
+                    const data = response.data.paginatedList;
                     const pageInfo=response.data.pageInfo;
                     dispatch(getAllProductsLoaded(data));
                     dispatch(setPageInfo(pageInfo));
@@ -47,7 +47,7 @@ export const onSizeChange = (current, pageSize) => {
         productService.getProductsWithParams(categoryId===0?null:categoryId, current, pageSize).
         then(
             (response) => {
-                const data = response.data.productList;
+                const data = response.data.paginatedList;
                 const pageInfo=response.data.pageInfo;
                 dispatch(getAllProductsLoaded(data));
                 dispatch(setPageInfo(pageInfo));

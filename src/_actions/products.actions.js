@@ -32,7 +32,7 @@ export const getAllProducts = () => {
         productService.getProducts()
             .then(
                 (response) => {
-                    const data = response.data.productList;
+                    const data = response.data.paginatedList;
                     const pageInfo=response.data.pageInfo;
                     dispatch(getAllProductsLoaded(data));
                     dispatch(setPageInfo(pageInfo));

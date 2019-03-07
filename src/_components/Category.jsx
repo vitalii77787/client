@@ -31,15 +31,7 @@ export class CategoriesPage extends React.Component {
                                     </div>
                                     <div className="sidebar_section">
                                         <div className="sidebar_subtitle brands_subtitle">Brands</div>
-                                        <ConnectedFiltersCategoryComponent/>
-                                            {/* <li className="brand"><a href="#">Apple</a></li>
-                                            <li className="brand"><a href="#">Beoplay</a></li>
-                                            <li className="brand"><a href="#">Google</a></li>
-                                            <li className="brand"><a href="#">Meizu</a></li>
-                                            <li className="brand"><a href="#">OnePlus</a></li>
-                                            <li className="brand"><a href="#">Samsung</a></li>
-                                            <li className="brand"><a href="#">Sony</a></li>
-                                            <li className="brand"><a href="#">Xiaomi</a></li> */}
+                                        <ConnectedFiltersCategoryComponent/> 
                                     </div>
 
                                 </div>
@@ -47,7 +39,7 @@ export class CategoriesPage extends React.Component {
                             <div className="col-lg-9">
                                 <div className="shop_content">
                                     <div className="shop_bar clearfix">
-                                        <div className="shop_product_count"><span>186</span> products found</div>
+                                        <div className="shop_product_count"><span></span> products found</div>
                                         <div className="shop_sorting">
                                             <span>Sort by:</span>
                                             <ul>
@@ -60,15 +52,7 @@ export class CategoriesPage extends React.Component {
                                     <RoutedCategoryProducts />
                                     <div className="shop_page_nav d-flex flex-row">
                                         <ConnectedPaginationComponent/>
-                                        {/* <ul className="page_nav d-flex flex-row">
-                                            <li className="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">...</a></li>
-                                            <li><a href="#">21</a></li>
-                                        </ul> */}
                                     </div>
-
                                 </div>
                             </div>
                         </div>
