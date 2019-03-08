@@ -30,7 +30,6 @@ export class CategoriesPage extends React.Component {
                                    <ConnectedFilterPrice/>
                                     </div>
                                     <div className="sidebar_section">
-                                        <div className="sidebar_subtitle brands_subtitle">Brands</div>
                                         <ConnectedFiltersCategoryComponent/> 
                                     </div>
 

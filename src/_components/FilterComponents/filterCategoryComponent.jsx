@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getFiltersByCategory } from '../../_actions/filters.actions';
+import { getFiltersByCategory, onSearchProducts } from '../../_actions/filters.actions';
 import { store } from '../../_helpers/store';
 import { FiltersList } from './FiltersList';
+import { Button } from 'antd';
 
 class FiltersComponent extends React.Component {
     render() {
@@ -40,7 +41,10 @@ class FiltersCategoryComponent extends React.Component{
 
     render(){
         return(
+            <div>
         <ConnectedFiltersComponent/>
+        <Button  onClick={this.props.SearchProducts}>Find!</Button>
+        </div>
         )
     }
 }
@@ -51,5 +55,7 @@ export const ConnectedFiltersCategoryComponent = connect(
            categoryId: state.categories.activeCategoryId
         };
     },
-    (dispatch) => { return {} }
+    (dispatch) => { return {
+        SearchProducts:()=>dispatch(onSearchProducts())
+    } }
 )(FiltersCategoryComponent);

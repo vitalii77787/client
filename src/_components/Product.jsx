@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { store } from '../_helpers/store';
-import { getProductById } from '../_actions/products.actions';
+import { getProductById, setActiveImage } from '../_actions/products.actions';
 import { ProductContainer } from './ProductContainer'
 
 
@@ -18,6 +18,10 @@ export class Product extends React.Component {
             store.dispatch(getProductById(productId))
         }
     }
+
+    componentWillUnmount() {
+        store.dispatch(setActiveImage(null));
+     }
 
     render() {
         return (

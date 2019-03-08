@@ -5,7 +5,7 @@ const defaultState = {
     products: [],
     wishList: [],
     activeProductId: 0,
-    productActiveImage:0,
+    productActiveImage:null,
     activeSortLabel:'default',
     //priceValue:{min:0, max:1000}
     priceValue:[0,1000]

@@ -6,11 +6,11 @@ import { getCartItem } from '../_actions/productCart.actions';
 
 
 class ProductPage extends Component {
-
+    
     render() {
         const { product } = this.props;
         const {products}=this.props;
-            let activeImage=(this.props.activeImage===0)?product.photo?product.photo[0]:0:this.props.activeImage;
+            let activeImage=(this.props.activeImage===null)?product.photo?product.photo[0]:0:this.props.activeImage;
             return (
                 product?
                 <div className="container">

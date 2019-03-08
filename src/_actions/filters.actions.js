@@ -22,6 +22,16 @@ export const getFiltersByCategory = (categoryId) => {
     }
 }
 
+export const onSearchProducts = () =>{
+    return dispatch => {
+        let param={ 
+        minvalue:0,
+        maxvalue:1000
+    };
+       filterService.getProductsByPrice(param);
+    }
+}
+
 export const onPageChange = (pageNumber) => {
     return dispatch => {
         const categoryId = store.getState().categories.activeCategoryId;
