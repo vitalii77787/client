@@ -11,8 +11,7 @@ export class Header extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col d-flex flex-row">
-                            <div className="top_bar_contact_item"><div className="top_bar_icon"><img src="" alt="" /></div>+38 068 005 3570</div>
-                            <div className="top_bar_contact_item"><div className="top_bar_icon"><img src="" alt="" /></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                            <div className="top_bar_contact_item"><div className="top_bar_icon"></div>One Tech</div>
                             <div className="top_bar_contact_item"><Link to="/categories">Categories</Link></div>
                             {!this.props.isLogin && <div className="top_bar_content ml-auto">
                                 <div className="top_bar_user">

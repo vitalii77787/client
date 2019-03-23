@@ -5,7 +5,8 @@ export const productService = {
     getProducts,
     getProductsByCategory,
     getProductById,
-    getProductsWithParams
+    getProductsWithParams,
+    getNewProducts
 }
 
 function getProducts() {
@@ -22,6 +23,11 @@ function getProductsWithParams(categoryId, pageNumber, pageSize) {
     });
     //return Promise.resolve({ data: products });
 }
+
+function getNewProducts(){
+    return axios.get('http://localhost:49274/api/product/newproducts');
+}
+
 function getProductById(productId) {
     return axios.get('http://localhost:49274/api/product/product', {
         params: {

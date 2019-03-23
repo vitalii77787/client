@@ -1,41 +1,37 @@
 import React from 'react';
-import {  ConnectedCart } from './Cart';
-import {  ConnectedWish } from './Wish';
-
+import { Link } from 'react-router-dom';
+import { ConnectedCart } from './Cart';
+import { ConnectedWish } from './Wish';
+import { Input } from 'antd';
 
 export class WishListCart extends React.Component {
 	render() {
+		const Search = Input.Search;
 		return (
 			<div class="header_main">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-2 col-sm-3 col-3 order-1">
 							<div class="logo_container">
-								<div class="logo"><a href="#">OneTech</a></div>
+								<div class="logo">
+									<Link to={`/`} style={{ margin: '10px' }}>OneTech</Link></div>
 							</div>
 						</div>
 						<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 							<div class="header_search">
 								<div class="header_search_content">
-									<div class="header_search_form_container">
-										<form action="#" class="header_search_form clearfix">
-											<input type="search" required="required" class="header_search_input" placeholder="Search for products..." />
-											<div class="custom_dropdown">
-												<div class="custom_dropdown_list">
-													<span class="custom_dropdown_placeholder clc">All Categories</span>
-													<i class="fas fa-chevron-down"></i>
-												</div>
-											</div>
-											<button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt="" /></button>
-										</form>
-									</div>
+											<Search
+												placeholder="input search text"
+												onSearch={value => console.log(value)}
+												enterButton
+											/>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 							<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-								<ConnectedWish/>
-								<ConnectedCart/>
+								<ConnectedWish />
+								<ConnectedCart />
 							</div>
 						</div>
 					</div>

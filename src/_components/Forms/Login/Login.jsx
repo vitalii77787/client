@@ -8,6 +8,7 @@ import { validateLogin } from '../../../_services/user-login-service';
 import {
     loginValidation
 } from '../../../_constants/ValidationConstants/login-validation.constants';
+import { loginUser } from '../../../_actions/user.actions';
 
 export class LoginForm extends Component {
 
@@ -26,11 +27,15 @@ export class LoginForm extends Component {
             }
         }
     }
+    onSubmit=(e)=> {
+        e.preventDefault();
+        this.props.login();
+        }
 
     render() {
         return (
             <div className="container" >
-                <form className="form-horizontal"  method="POST" action="/register">
+                <form className="form-horizontal"  onSubmit={this.onSubmit}>
                     <div className="row">
                         <div className="col-md-3"></div>
                         <div className="col-md-6">
@@ -110,6 +115,7 @@ export const ConnectedLoginForm = connect(
         return {
             changeMail: (mail) => dispatch(changeMailAction(mail)),
             changePassword: (password) => dispatch(changePasswordAction(password)), 
+            login: () =>dispatch(loginUser())
         }
     }
 )(LoginForm);

@@ -7,9 +7,13 @@ export class UserService {
             Email: mail,
             Password: password
         })
-        // return Promise.resolve({ user: products });
     }
-
+    static loginUser(mail, password) {
+        return axios.post('http://localhost:49274/auth/login', {
+            Email: mail,
+            Password: password
+        })
+    }
     static setAuthorizationToken(token) {
         if (token) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

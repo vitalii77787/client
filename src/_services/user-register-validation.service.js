@@ -30,14 +30,14 @@ export const validate = (name, mail, password, passwordConfirm) => {
     //     result.isValid = false;
     //     result.errors.push(error);
     // }
-    // if(password && passwordConfirm && !isEqual(password, passwordConfirm)){
-    //     let error = {
-    //         id: registerValidation.confirm,
-    //         text: registerValidation.incorrectConfirm
-    //     }
-    //     result.isValid = false;
-    //     result.errors.push(error);
-    // }
+    if(!isEqual(password, passwordConfirm)){
+        let error = {
+            id: registerValidation.confirm,
+            text: registerValidation.incorrectConfirm
+        }
+        result.isValid = false;
+        result.errors.push(error);
+    }
     return result;
 }
 

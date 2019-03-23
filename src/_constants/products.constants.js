@@ -11,5 +11,6 @@ export const productConstants ={
     setDefault: "SET_DEFAULT",
     setActiveImage: "SET_ACTIVE_IMAGE",
     setDefaultImage: "SET_DEFAULT_IMAGE",
-    setPrice: "SET_PRICE"
+    setPrice: "SET_PRICE",
+    getNewProductsLoaded: "GET_NEW_PRODUCTS_LOADED"
 }

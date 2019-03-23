@@ -14,14 +14,14 @@ export const validateLogin = ( mail, password) => {
         result.isValid = false;
         result.errors.push(error);
     }
-    if (password && !passwordValid(password)) {
-        let error = {
-            id: loginValidation.password,
-            text: loginValidation.incorrectPassword
-        }
-        result.isValid = false;
-        result.errors.push(error);
-    }
+    // if (password && !passwordValid(password)) {
+    //     let error = {
+    //         id: loginValidation.password,
+    //         text: loginValidation.incorrectPassword
+    //     }
+    //     result.isValid = false;
+    //     result.errors.push(error);
+    // }
     return result;
 }
 
@@ -31,6 +31,6 @@ function emailValid(formfield) {
 }
 
 function passwordValid(formfield) {
-    var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/;
+    var passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{6,20}$/;
     return passwordRegex.test(formfield);
 }

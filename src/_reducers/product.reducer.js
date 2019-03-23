@@ -4,6 +4,7 @@ const defaultState = {
     product:{},
     products: [],
     wishList: [],
+    newProducts: [],
     activeProductId: 0,
     productActiveImage:null,
     activeSortLabel:'default',
@@ -15,6 +16,9 @@ const defaultState = {
     switch (action.type) {
       case productConstants.setPrice:{
         return{ ...state, priceValue:action.payload};
+      }
+      case productConstants.getNewProductsLoaded:{
+        return { ...state, newProducts: action.payload };
       }
       case productConstants.getAllProductsLoaded: {
         return { ...state, products: action.payload };

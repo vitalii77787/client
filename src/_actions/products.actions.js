@@ -2,6 +2,15 @@ import { productConstants } from '../_constants/products.constants';
 import { productService } from '../_services/products.service';
 import { ToggleWishList } from './wish.actions';
 import { setPageInfo } from './filters.actions';
+import { notifyConstants } from '../_constants/notification.constants';
+import {  notification } from 'antd';
+
+const openErrorNotification = (error) => {
+    notification['error']({
+        message: notifyConstants.someError,
+        description: error,
+      });
+    };
 
 export const productsActions = {
     getAllProducts,
@@ -21,11 +30,28 @@ export const getProductById = (productId) => {
                 },
                 error => {
                     console.log(error);
-                    // dispatch(failure(id, error));
+                   openErrorNotification(error);
                 }
             );
     }
 }
+
+export const getNewProducts =() =>{
+    return dispatch => {
+        productService.getNewProducts()
+        .then(
+            (response) =>{
+                const data = response.data;
+                dispatch(getNewProductsLoaded(data));
+            },
+            error =>{
+                console.log(error);
+                openErrorNotification(error); 
+            }
+        )
+    }
+}
+
 export const getAllProducts = () => {
     return dispatch => {
 
@@ -39,7 +65,7 @@ export const getAllProducts = () => {
                 },
                 error => {
                     console.log(error);
-                    // dispatch(failure(id, error));
+                    openErrorNotification(error);
                 }
             );
     }
@@ -52,21 +78,21 @@ export function getAllProductsLoaded(products) {
     }
 }
 export const getProductsByCategory = (categoryId) => {
-    return dispatch => {
-        productService.getProductsByCategory(categoryId).
-            then(
-                (response) => {
-                    const data = response.data;
-                    dispatch(getProductsByCategoryLoaded(data));
-                    dispatch(setDefaultProductImage());
-                    dispatch(setActiveSortLabel("default"));
-                },
-                error => {
-                    console.log(error);
-                    // dispatch(failure(id, error));
-                }
-            );
-    }
+    // return dispatch => {
+    //     productService.getProductsByCategory(categoryId).
+    //         then(
+    //             (response) => {
+    //                 const data = response.data;
+    //                 dispatch(getProductsByCategoryLoaded(data));
+    //                 dispatch(setDefaultProductImage());
+    //                 dispatch(setActiveSortLabel("default"));
+    //             },
+    //             error => {
+    //                 console.log(error);
+    //                 openErrorNotification(error);
+    //             }
+    //         );
+    // }
 }
 export const sortProducts=(key)=>{
     return dispatch=>{
@@ -100,6 +126,14 @@ function getProductByIdLoaded(product) {
         payload: product
     }
 }
+
+const getNewProductsLoaded = (newproducts) =>{
+    return {
+        type: productConstants.getNewProductsLoaded,
+        payload: newproducts
+    }
+}
+
 function getProductsByCategoryLoaded(products) {
     return {
         type: productConstants.getProductsByCategoryLoaded,

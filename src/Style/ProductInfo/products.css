@@ -13,3 +13,8 @@
     margin:10px;
     width: 17%;
 }
+.newproduct-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
