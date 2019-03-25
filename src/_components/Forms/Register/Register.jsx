@@ -10,7 +10,7 @@ import { validate } from '../../../_services/user-register-validation.service';
 import {
     registerValidation
 } from '../../../_constants/ValidationConstants/register-validation.constants';
-import { registerUser } from '../../../_actions/user.actions';
+import { registerUser, clearForm } from '../../../_actions/user.actions';
 
 class RegisterForm extends Component {
     changeName = (event) => {
@@ -43,7 +43,9 @@ class RegisterForm extends Component {
             }
         }
     }
-
+    componentWillUnmount(){
+        this.props.clearForm();
+    }
     onSubmit=(e)=> {
         e.preventDefault();
         this.props.register();
@@ -173,6 +175,7 @@ class RegisterForm extends Component {
     }
 }
 
+
 export const ConnectedRegisterForm = connect(
     (state, ownProps) => {
         return {
@@ -190,7 +193,8 @@ export const ConnectedRegisterForm = connect(
             changeMail: (mail) => dispatch(changeMailAction(mail)),
             changePassword: (password) => dispatch(changePasswordAction(password)),
             changePasswordConfirm: (passwordConfirm) => dispatch(changePasswordConfirmAction(passwordConfirm)),
-            register:()=>dispatch(registerUser())
+            register:()=>dispatch(registerUser()),
+            clearForm: ()=>dispatch(clearForm())
         }
     }
 )(RegisterForm);

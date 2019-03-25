@@ -1,4 +1,5 @@
 import { loginModelConstants } from '../_constants/loginModel.constants';
+import { userConstants } from '../_constants/user.constants';
 
 const defaultLoginModelState = {
     email: "",
@@ -11,6 +12,9 @@ export const loginModelReducer = (state = defaultLoginModelState, action) => {
         }
         case loginModelConstants.setPasswordActionType: {
             return { ...state, password: action.payload };
+        }
+        case userConstants.clearForm: {
+            return { ...state, email: action.payload, password: action.payload };
         }
         default:
             return state

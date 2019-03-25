@@ -17,13 +17,12 @@ export class Header extends React.Component {
                                 <div className="top_bar_user">
                                     <div className="user_icon"><img src="" alt="" /></div>
                                     <div><Link to="/register">Register</Link></div>
-                                    <div><Link to="/login">Sign in</Link></div>
+                                    <div><Link to="/login">Log in</Link></div>
                                 </div>
                             </div>
                             }
                             {
                                 this.props.isLogin &&
-                                
                                     <div className="top_bar_contact_item ml-auto">
                                         Hello {this.props.mail+'  '} !
                                         <button className="btn btn-outline-success btn-sm" onClick={() => this.props.LogOut()}>LogOFF</button>
@@ -43,7 +42,7 @@ export const HeaderContainer = connect(
     (state) => {
         return {
             isLogin: state.authentication.logginIn,
-            mail: state.authentication.user.email
+            mail: state.authentication.user.mail
         };
     },
     (dispatch) => { return {

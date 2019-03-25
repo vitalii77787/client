@@ -8,7 +8,7 @@ import { validateLogin } from '../../../_services/user-login-service';
 import {
     loginValidation
 } from '../../../_constants/ValidationConstants/login-validation.constants';
-import { loginUser } from '../../../_actions/user.actions';
+import { loginUser,  clearForm } from '../../../_actions/user.actions';
 
 export class LoginForm extends Component {
 
@@ -32,6 +32,9 @@ export class LoginForm extends Component {
         this.props.login();
         }
 
+        componentWillUnmount(){
+            this.props.clearForm();
+        }
     render() {
         return (
             <div className="container" >
@@ -115,7 +118,8 @@ export const ConnectedLoginForm = connect(
         return {
             changeMail: (mail) => dispatch(changeMailAction(mail)),
             changePassword: (password) => dispatch(changePasswordAction(password)), 
-            login: () =>dispatch(loginUser())
+            login: () =>dispatch(loginUser()),
+            clearForm: ()=>dispatch(clearForm())
         }
     }
 )(LoginForm);

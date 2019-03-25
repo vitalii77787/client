@@ -3,11 +3,13 @@ import { UserService } from '../_services/user.service';
 import { store } from '../_helpers/store';
 import jwt from 'jsonwebtoken';
 import {  notification } from 'antd';
+import { notifyConstants } from '../_constants/notification.constants';
+import { history } from '../_helpers/history';
 
 const openErrorNotification = (error) => {
     notification['error']({
         message: notifyConstants.someError,
-        description: error,
+        description: error
       });
     };
 
@@ -27,10 +29,11 @@ export const registerUser = () => {
                     UserService.setAuthorizationToken(token);
                     dispatch(setUser(jwt.decode(token)));
                     dispatch(setIsLogIn(true));
+                    history.push('/');
                 },
                 error => {
-                    console.log(error);
-                    openErrorNotification(error); 
+                    console.log(error.response.data.login_failure[0]);
+                    openErrorNotification(error.response.data.login_failure[0]); 
                 }
             );
     }
@@ -48,15 +51,22 @@ export const loginUser = () =>{
                     UserService.setAuthorizationToken(token);
                     dispatch(setUser(jwt.decode(token)));
                     dispatch(setIsLogIn(true));
+                    history.push('/');
                 },
                 error => {
-                    console.log(error);
-                    openErrorNotification(error);  
+                    console.log(error.response.data.login_failure[0]);
+                    openErrorNotification(error.response.data.login_failure[0]); 
                 }
             );
     }
 }
 
+export const clearForm = () =>{
+    return  {
+        type:userConstants.clearForm,
+        payload: ''
+    }
+}
 
 const setIsLogIn=(param)=>{
     return{

@@ -12,8 +12,8 @@ export class NewProductView extends Component {
                 <Link to={`/product/${product.id}`} style={{margin:'10px'}}>
                     <Card
                         hoverable
-                        style={{ width: 240}}
-                        cover={<img alt="example" src={product.photo ? product.photo : ""} style={{maxWidth: '240px', height: '240px'}}/>}
+                        style={{ width: 200}}
+                        cover={<img alt="example" src={product.photo ? product.photo : ""} style={{width: '200px', height: '200px'}}/>}
                     >
                         <Meta
                             title={product.name}

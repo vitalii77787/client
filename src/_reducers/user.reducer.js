@@ -1,8 +1,11 @@
 import { userConstants } from '../_constants/user.constants';
+import jwt from 'jsonwebtoken';
+
+let user = jwt.decode(localStorage.getItem('token'));
 
 const defaultState = {
-    user: {},
-    logginIn: false
+    user: user ? user :{},
+    logginIn: user ? true : false
 
 };
 

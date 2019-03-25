@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Hunting_Knife from '../../images/Hunting_Knife.png';
+import { Button } from 'antd';
 import { incrementCartProduct, decrementCartProduct, deleteCartItem, addOrderLine } from '../../_actions/productCart.actions';
 
 export class CartItem extends Component {
@@ -37,10 +37,10 @@ export class CartItem extends Component {
                             <div class="cart_item_text">${Math.round(product.price) * product.quantity}</div>
                         </div>
                         <div class="cart_item_total cart_info_col">
-                            <button className="btn btn-primary" style={{ marginTop: "50%" }} onClick={() => this.props.Delete(product.id)}>Delete</button>
+                            <Button type="danger" style={{ marginTop: "70%" }} onClick={() => this.props.Delete(product.id)}>Delete</Button>
                         </div>
                         <div class="cart_item_total cart_info_col">
-                            <button className="btn btn-primary" style={{ marginTop: "50%" }} onClick={() => this.props.AddOrderLine(true, product.id, product.quantity)}>Order</button>
+                            <Button type="primary"  disabled={(product.quantity<1)} style={{ marginTop: "70%" }} onClick={() => this.props.AddOrderLine(true, product.id, product.quantity)}>Order</Button>
                         </div>
                     </div>
                 </div>
